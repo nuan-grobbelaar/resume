@@ -1,0 +1,49 @@
+.container {
+  background-color: #FFDCA8;
+  min-height: 80vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+}
+
+.main-text {
+  /* font-family: 'Kanit', sans-serif !important; */
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 17rem !important;
+  margin-bottom: -2rem !important;
+  padding-left: 2rem;
+}
+
+.alt-text {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 9rem !important;
+  margin-bottom: -2rem !important;
+  padding-left: 2rem;
+  /* text-decoration: underline; */
+  color: #000;
+}
+
+.name-label {
+  background-color: #F79900;
+  padding-right: 1.5rem;
+  padding-bottom: 1rem;
+  margin-right: auto;
+}
+
+.card-media {
+  width: 10rem !important;
+  height: 10rem;
+  padding-top: 0%;
+  /* margin-top: 3rem; */
+  margin-right: auto;
+  /* margin-right: 3rem; */
+}
