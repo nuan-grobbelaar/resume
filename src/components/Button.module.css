@@ -1,0 +1,37 @@
+.container {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.button {
+  /* background-color: #C637E3 !important; */
+  border-radius: 0 !important;
+  padding: 10px !important;
+  padding-bottom: 8px !important;
+  border: 2px solid #000 !important;
+
+  /* box-shadow: 1px 2px 8px rgba(0, 0, 0, 1) !important; */
+}
+
+.button:after{
+  content:'';
+  position:absolute;
+  background-color:#000;
+  top: 2px;
+  left: 2px;
+  right: -5.5px;
+  bottom: -5.5px;
+  z-index: -1;
+}
+
+.button-text {
+  color: #000 !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+}
+
+.selected-arrow {
+  margin-top: 1rem;
+  width: 3rem;
+  height: 3rem;
+}

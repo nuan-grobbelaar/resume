@@ -1,0 +1,18 @@
+.nav {
+  /* background-color: blueviolet; */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 2rem;
+  padding-top: 1rem;
+}
+
+.button-rotate-1 {
+  transform: rotate(1deg);
+}
+
+.button-rotate-2 {
+  transform: rotate(2deg);
+}
