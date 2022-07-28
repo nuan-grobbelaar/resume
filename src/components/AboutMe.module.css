@@ -1,0 +1,19 @@
+.container {
+  background-color: #FF8181;
+  height: calc(100vh - 160px);
+  width: 100%;
+  padding-top: 9rem;
+  padding-bottom: 1rem;
+  padding-left: 1rem;
+  /* flex-direction: row;
+  align-items: center;
+  justify-content: center; */
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 50% 50%;
+  width: 100%;
+  height: 100%;
+}
