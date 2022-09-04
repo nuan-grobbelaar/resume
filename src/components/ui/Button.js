@@ -1,6 +1,6 @@
 import classes from './Button.module.css';
 
-import Arrow from './Arrow'
+import Arrow from '../icons/Arrow'
 
 import { useEffect, useState } from 'react'
 import { Typography, Box, CardMedia, Button } from '@mui/material';

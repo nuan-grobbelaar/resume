@@ -1,6 +1,6 @@
 import classes from './Arrow.module.css'
 
-import arrow from '../resources/arrow.svg';
+import arrow from '../../resources/arrow.svg';
 
 const Arrow = (props) => {
   return (

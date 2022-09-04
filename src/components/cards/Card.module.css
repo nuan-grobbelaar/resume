@@ -5,6 +5,16 @@
   z-index: 10 !important;
 }
 
+.modal-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  height: fit-content;
+  z-index: 101 !important;
+}
+
 .card {
   width: 250px;
   height: 300px;
@@ -27,6 +37,22 @@
   border-radius: 2px !important;
 }
 
+.modal-container > .card {
+  width: 550px;
+  max-width: 100%;
+  height: 660px;
+  border: 3px solid #000 !important;
+  border-radius: 1px !important;
+}
+
+.modal-container > .card:after {
+  background-color:#000 !important;
+  top: 0px !important;
+  left: 0px !important;
+  right: 0px !important;
+  bottom: 0px !important;
+}
+
 .title-bar {
   width: auto;
   height: 50px;
@@ -41,6 +67,16 @@
   color: #000 !important;
   font-family: 'Bebas Neue', sans-serif !important;
   font-size: 20px;
+}
+
+.modal-container > .card > .title-bar {
+  height: 75px;
+  font-size: 32px;
+  border: 3px solid #000;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  padding-left: 20px;
 }
 
 .card-content {
@@ -61,4 +97,13 @@
   font-family: 'Bebas Neue', sans-serif !important;
   margin-bottom: 5px;
   font-size: 18px;
+}
+
+.modal-container > .card > .card-content > .heading {
+  font-size: 22px;
+}
+
+.accent-text {
+  font-family: 'Inria Sans', sans-serif !important;
+  font-size: 16px;
 }

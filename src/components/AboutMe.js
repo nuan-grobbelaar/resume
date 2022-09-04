@@ -1,6 +1,6 @@
 import classes from './AboutMe.module.css';
 
-import Card from './Card';
+import Card from './cards/Card';
 
 const AboutMe = (props) => {
   return (

@@ -1,5 +1,5 @@
 .container {
-  background-color: #64C8FA;
+  background-color: inherit;
   height: calc(100vh - 160px);
   width: 100%;
   padding-top: 9rem;

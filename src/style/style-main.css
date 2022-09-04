@@ -1,0 +1,30 @@
+.flex-col-container {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+
+.flex-row-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+ul {
+    padding-left: 16px !important;
+}
+
+li {
+    margin-bottom: 4px;
+}
+
+.mt-auto {
+    margin-top: auto;
+}
+
+.mt-1 {
+    margin-top: 8px;
+}

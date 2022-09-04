@@ -1,9 +1,8 @@
 import classes from './NavBar.module.css';
 import Button from './Button'
 
-import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { navActions } from '../store/nav.js';
+import { navActions } from '../../store/nav.js';
 
 import { Typography, Box, CardMedia } from '@mui/material';
 
@@ -14,7 +13,6 @@ const NavBar = (props) => {
   const setSelected = (section) => {
     dispatch(navActions.setPage(section));
   }
-
 
   return (
     <Box className={classes.nav}>
@@ -37,7 +35,7 @@ const NavBar = (props) => {
       >
         Experience
       </Button>
-      <Button 
+      {/* <Button 
         className={classes.button} 
         color={'#36BCFF'} 
         rotate={1} 
@@ -45,7 +43,7 @@ const NavBar = (props) => {
         selected={selected === 'skills'}
       >
         Skills
-      </Button>
+      </Button> */}
       <Button 
         className={classes.button} 
         color={'#F13A3A'} 

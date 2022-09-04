@@ -5,10 +5,9 @@ import { useRef, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { navActions } from './store/nav.js';
 
-import NavBar from './components/NavBar';
+import NavBar from './components/ui/NavBar';
 import FrontPage from './components/FrontPage';
 import Experience from './components/Experience';
-import Skills from './components/Skills';
 import AboutMe from './components/AboutMe';
 
 function App() {
@@ -46,7 +45,7 @@ function App() {
       <NavBar />
       <section style={{width: '100%'}} ref={home}><FrontPage /></section>
       <section style={{width: '100%'}} ref={experience}><Experience /></section>
-      <section style={{width: '100%'}} ref={skills}><Skills /></section>
+      {/* <section style={{width: '100%'}} ref={skills}><Skills /></section> */}
       <section style={{width: '100%'}} ref={about}><AboutMe /></section>
     </div>
   );

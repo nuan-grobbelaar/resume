@@ -1,0 +1,24 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.container {
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+  width: auto;
+  border-radius: 0 !important;
+  padding-top: 4px;
+  padding-bottom: 5px;
+  padding-right: 8px;
+  padding-left: 8px;
+  border: 0.25px solid #000 !important;
+  border-radius: 0.5px !important;
+}
+
+.text {
+  color: #000 !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 14px;
+}
