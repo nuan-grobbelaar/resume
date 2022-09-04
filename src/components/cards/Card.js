@@ -2,7 +2,7 @@ import '../../style/style-main.css'
 import classes from './Card.module.css';
 import { useState } from 'react';
 import Modal from './Modal'
-import Tag from '../ui/Tag';;
+import Tag from '../ui/Tag';
 
 const BrutalCard = (props) => {
 
