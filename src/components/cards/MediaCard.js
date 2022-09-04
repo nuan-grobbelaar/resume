@@ -1,6 +1,6 @@
 import classes from './MediaCard.module.css';
 import { useState } from 'react';
-import Modal from './Modal'
+import Modal from './Modal';
 
 const MediaCard = (props) => {
 
