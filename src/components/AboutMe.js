@@ -14,6 +14,7 @@ const AboutMe = (props) => {
 					title={"Education"}
 					heading={"Stellenbosch University"}
 					body={"Grad. Dec 2018"}
+					rotate={"2"}
 				/>
 			</Grid>
 		</Container>

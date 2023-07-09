@@ -1,48 +1,52 @@
-import classes from './MediaCard.module.css';
-import { useState } from 'react';
-import Modal from './Modal';
+import { useState } from "react";
+import Modal from "./Modal";
+
+import styles from "../../styles.less";
 
 const MediaCard = (props) => {
+	const [showModal, setShowModal] = useState(false);
 
-  const [showModal, setShowModal] = useState(false);
+	const toggleInfo = () => {
+		setShowModal(!showModal);
+	};
 
-  const toggleInfo = () => {
-    setShowModal(!showModal);
-  };
+	document.body.style.overflow = showModal ? "hidden" : "auto";
 
-  document.body.style.overflow = showModal ? 'hidden' : 'auto';
-
-  return (
-    <>
-      {showModal && 
-        <Modal 
-          className={classes['modal-container']}
-          handleClose={setShowModal.bind(null, false)}
-        >
-          <div className={classes['card']}>
-            <div className={classes['card-content']}>
-            </div>
-          </div>
-        </Modal>
-      }
-      {!showModal &&
-        <div 
-          className={classes['container'] + ' ' + props.className} 
-          style={{transform: 'rotate('+props.rotate+'deg)'}} 
-          onClick={toggleInfo}
-        >
-          <div className={classes['card']}>
-            <div className={classes['card-content']}>
-              <img src={props.src} alt="Card Media" width="auto" height="100%" />
-            </div>
-            <div className={classes['card-title']}>
-              {props.title}
-            </div>
-          </div>
-        </div>
-      }
-    </>
-  );
+	return (
+		<>
+			{showModal && (
+				<Modal
+					className={styles["card--modal"]}
+					handleClose={setShowModal.bind(null, false)}
+				>
+					<div className={styles.card__content}>
+						<div className={styles["card__content__card-body--media"]}></div>
+					</div>
+				</Modal>
+			)}
+			{!showModal && (
+				<div
+					className={styles.card + " " + props.className}
+					style={{ transform: "rotate(" + props.rotate + "deg)" }}
+					onClick={toggleInfo}
+				>
+					<div className={styles.card__content}>
+						<div className={styles["card__content__card-body--media"]}>
+							<img
+								src={props.src}
+								alt="Card Media"
+								width="auto"
+								height="100%"
+							/>
+						</div>
+						<div className={styles["card__content__title-bar"]}>
+							{props.title}
+						</div>
+					</div>
+				</div>
+			)}
+		</>
+	);
 };
 
 export default MediaCard;
