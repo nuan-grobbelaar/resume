@@ -1,31 +1,27 @@
-import '../style/style-main.css'
-import classes from './FrontPage.module.css';
-import Card from './cards/Card';
-import MediaCard from './cards/MediaCard'
+import "../style/style-main.css";
+import classes from "./FrontPage.module.css";
 
-import { Typography, Box, CardMedia } from '@mui/material';
+import Container from "./ui/Container";
+import Grid from "./ui/Grid";
+import Card from "./cards/Card";
+import MediaCard from "./cards/MediaCard";
 
-import me from '../resources/me.jpg';
+import { Typography, Box, CardMedia } from "@mui/material";
 
-const FrontPage = (props) => {
-  return (
-    <>
-      
-      <div className={classes.container}>
-        <div className={classes.grid}>
-        {/* <Typography className={classes['main-text']} variant='h1'>GROBBELAAR</Typography> */}
-          <MediaCard 
-            className={classes['item-1']}
-            src={me} 
-            rotate={'2'}
-            title={'Table Mountain'}
-          >
-          </MediaCard>
-        </div>
-      </div>
-      
-    </>
-  );
-};
+import me from "../resources/me.jpg";
 
-export default FrontPage;
+export default function FrontPage(props) {
+	return (
+		<Container>
+			<Grid columns={4} rows={2}>
+				{/* <Typography className={classes['main-text']} variant='h1'>GROBBELAAR</Typography> */}
+				<MediaCard
+					className={classes["item-1"]}
+					src={me}
+					rotate={"2"}
+					title={"Table Mountain"}
+				></MediaCard>
+			</Grid>
+		</Container>
+	);
+}

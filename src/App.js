@@ -8,6 +8,7 @@ import { navActions } from './store/nav.js';
 import NavBar from './components/ui/NavBar';
 import FrontPage from './components/FrontPage';
 import Experience from './components/Experience';
+import Skills from './components/Skills';
 import AboutMe from './components/AboutMe';
 
 function App() {
@@ -19,34 +20,60 @@ function App() {
   const skills = useRef(null);
   const about = useRef(null);
 
-  const map = {home: home, experience: experience, skills: skills, about: about}
+  const sections = {
+    home: {
+      ref: home,
+      navButton: {
+        name: 'home',
+        color: '#F79900',
+        rotation: -1,
+      },
+      section: <FrontPage />
+    }, 
+    experience: {
+      ref: experience,
+      navButton: {
+        name: 'experience',
+        color: '#C637E3',
+        rotation: 2,
+      },
+      section: <Experience />
+    }, 
+    skills: {
+      ref: skills,
+      navButton: {
+        name: 'skills',
+        color: '#36BCFF',
+        rotation: 1,
+      },
+      section: <Skills />
+    }, 
+    about: {
+      ref: about,
+      navButton: {
+        name: 'about',
+        color: '#F13A3A',
+        rotation: -1,
+      },
+      section: <AboutMe />
+    }
+  }
 
   useEffect(() => {
     if (selected && selected !== '') {
       window.scrollTo({
-        top: map[selected].current.offsetTop,
+        top: sections[selected].ref.current.offsetTop,
         behavior: 'smooth',
       });
     }
   }, [selected]);
 
-  // useEffect(() => {
-  //   const observer = new IntersectionObserver((entries, observer) => {
-  //     const entry = entries[0];
-  //     if (entry.isIntersecting) {
-  //       dispatch(navActions.setPage('skills'));
-  //     }
-  //   });
-  //   observer.observe(skills.current);
-  // }, []);
-
   return (
     <div className="App">
-      <NavBar />
-      <section style={{width: '100%'}} ref={home}><FrontPage /></section>
-      <section style={{width: '100%'}} ref={experience}><Experience /></section>
-      {/* <section style={{width: '100%'}} ref={skills}><Skills /></section> */}
-      <section style={{width: '100%'}} ref={about}><AboutMe /></section>
+      <NavBar sections={sections} />
+      {Object.values(sections).map((section) => {
+        return <section ref={section.ref}>{section.section}</section>
+      })}
     </div>
   );
 }

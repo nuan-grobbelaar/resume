@@ -1,25 +1,23 @@
-import classes from './AboutMe.module.css';
+import classes from "./AboutMe.module.css";
 
-import Card from './cards/Card';
+import Grid from "./ui/Grid";
+import Card from "./cards/Card";
+import Container from "./ui/Container";
 
 const AboutMe = (props) => {
-  return (
-    <>
-      
-      <div className={classes.container}>
-        <div className={classes.grid}>
-          <Card 
-            className={classes.card} 
-            color={'#E32BD1'}
-            title={'Education'}  
-            heading={'Stellenbosch University'}
-            body={'Grad. Dec 2018'}
-          />
-        </div>
-      </div>
-      
-    </>
-  );
+	return (
+		<Container>
+			<Grid columns={4} rows={2}>
+				<Card
+					className={classes.card}
+					color={"#E32BD1"}
+					title={"Education"}
+					heading={"Stellenbosch University"}
+					body={"Grad. Dec 2018"}
+				/>
+			</Grid>
+		</Container>
+	);
 };
 
 export default AboutMe;
