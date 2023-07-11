@@ -1,11 +1,18 @@
 import classes from "./Skills.module.css";
 
+import { useRef } from "react";
 import Container from "./ui/Container";
 import Grid from "./ui/Grid";
+import useOnScreen from "../hooks/useOnScreen";
 
 export default function Skills(props) {
+	const ref = useRef(null);
+	const isVisible = useOnScreen(ref);
+
+	console.log("Skills", "isVisible", isVisible);
+
 	return (
-		<Container>
+		<Container innerRef={ref}>
 			<Grid columns={4} rows={2}></Grid>
 		</Container>
 	);

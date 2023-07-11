@@ -1,8 +1,8 @@
-import classes from "./Container.module.css";
+import styles from "../../styles.less";
 
 export default function Container(props) {
 	return (
-		<div ref={props.innerRef} className={classes.container}>
+		<div ref={props.innerRef} className={styles.container}>
 			{props.children}
 		</div>
 	);
