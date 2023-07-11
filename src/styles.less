@@ -2,6 +2,9 @@
 @secondary-font: 'Inria Sans', sans-serif !important;
 @tertiary-font: 'Permanent Marker', sans-serif !important;
 
+@container-height: calc(100vh - 160px);
+@container-width: 100vw;
+
 .flex-col-container {
   display: flex;
   flex-direction: column;
@@ -35,11 +38,15 @@ li {
 
 .container {
   background-color: inherit;
-  height: calc(100vh - 160px);
-  width: 100%;
+  height: @container-height;
+  width: @container-width;
   padding-top: 9rem;
   padding-bottom: 1rem;
   padding-left: 1rem;
+
+  .container__item {
+    position: absolute;
+  }
 }
 
 .overlay {
