@@ -1,12 +1,19 @@
 import classes from "./Experience.module.css";
 
+import { useRef } from "react";
 import Container from "./ui/Container";
 import Grid from "./ui/Grid";
 import Card from "./cards/Card";
+import useOnScreen from "../hooks/useOnScreen";
 
 export default function Experience(props) {
+	const ref = useRef(null);
+	const isVisible = useOnScreen(ref);
+
+	console.log("Experience", "isVisible", isVisible);
+
 	return (
-		<Container>
+		<Container innerRef={ref}>
 			<Grid columns={3} rows={2}>
 				<div className={classes["item-1"]}>
 					<Card
@@ -68,7 +75,7 @@ export default function Experience(props) {
 						color={"#FF8181"}
 						title={"Mezzanine"}
 						heading={"Full Stack Developer"}
-						accentText={"June 2021 - Currently"}
+						accentText={"June 2021 - October 2022"}
 						summary={
 							"My time at Mezzanine has given me a great appreciation for the impact that new technology can have when introduced in developing countries."
 						}
