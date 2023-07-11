@@ -1,4 +1,4 @@
-import classes from "./NavBar.module.css";
+import styles from "../../styles.less";
 import Button from "./Button";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -15,16 +15,15 @@ const NavBar = (props) => {
 	};
 
 	return (
-		<Box className={classes.nav}>
-			<Box className={classes["name-label"]}>
-				<Typography className={classes["alt-text"]} variant="h1">
+		<Box className={styles.navBar}>
+			<Box className={styles["navBar__name-label"]}>
+				<Typography className={styles.text} variant="h1">
 					NUAN
 				</Typography>
 			</Box>
 			{Object.values(props.sections).map((section) => {
 				return (
 					<Button
-						className={classes.button}
 						color={section.navButton.color}
 						rotate={section.navButton.rotation}
 						onClick={setSelected.bind(null, section.navButton.name)}
