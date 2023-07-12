@@ -9,17 +9,23 @@ const BrutalButton = (props) => {
 	const [showArrow, setShowArrow] = useState(false);
 
 	useEffect(() => {
-		if (props.selected) {
+		if (props.wasPressed) {
 			setShowArrow(true);
 			setTimeout(() => {
 				setShowArrow(false);
+				props.unsetPressed();
 			}, 1000);
 		}
-	}, [props.selected]);
+	}, [props.wasPressed]);
 
 	return (
 		<div className={styles["brutalButton"]}>
-			<Box className={styles["brutalButton__container"]}>
+			<Box
+				className={
+					styles["brutalButton__container"] +
+					(props.selected ? " " + styles.selected : "")
+				}
+			>
 				<Box style={{ transform: "rotate(" + props.rotate + "deg)" }}>
 					<Button
 						className={

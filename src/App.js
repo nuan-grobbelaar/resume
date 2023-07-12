@@ -13,7 +13,9 @@ import AboutMe from "./components/AboutMe";
 
 function App() {
 	const dispatch = useDispatch();
-	const selected = useSelector((state) => state.nav.selected);
+	const page = useSelector((state) => state.nav.page);
+
+	console.log("selectedPage", page);
 
 	const home = useRef(null);
 	const experience = useRef(null);
@@ -60,13 +62,13 @@ function App() {
 	};
 
 	useEffect(() => {
-		if (selected && selected !== "") {
+		if (page && page !== "") {
 			window.scrollTo({
-				top: sections[selected].ref.current.offsetTop,
+				top: sections[page].ref.current.offsetTop,
 				behavior: "smooth",
 			});
 		}
-	}, [selected]);
+	}, [page]);
 
 	return (
 		<div className="App">

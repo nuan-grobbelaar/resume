@@ -4,11 +4,6 @@ import Card from "./cards/Card";
 import useOnScreen from "../hooks/useOnScreen";
 
 export default function Experience(props) {
-	const ref = useRef(null);
-	const isVisible = useOnScreen(ref);
-
-	console.log("Experience", "isVisible", isVisible);
-
 	const positions = {
 		aci: {
 			xPos: 0.06,
@@ -21,9 +16,8 @@ export default function Experience(props) {
 	};
 
 	return (
-		<Container innerRef={ref} index={props.index} positions={positions}>
+		<Container index={props.index} positions={positions} name="experience">
 			{/* <Grid columns={3} rows={2}> */}
-
 			<Card
 				id="aci"
 				color={"#99E32B"}

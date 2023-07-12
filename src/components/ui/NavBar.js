@@ -2,6 +2,7 @@ import styles from "../../styles.less";
 import Button from "./Button";
 
 import { useSelector, useDispatch } from "react-redux";
+import { useState } from "react";
 import { navActions } from "../../store/nav.js";
 
 import { Typography, Box, CardMedia } from "@mui/material";
@@ -9,8 +10,10 @@ import { Typography, Box, CardMedia } from "@mui/material";
 const NavBar = (props) => {
 	const dispatch = useDispatch();
 	const selected = useSelector((state) => state.nav.selected);
+	const [wasPressed, setWasPressed] = useState("");
 
 	const setSelected = (section) => {
+		setWasPressed(section);
 		dispatch(navActions.setPage(section));
 	};
 
@@ -28,6 +31,8 @@ const NavBar = (props) => {
 						rotate={section.navButton.rotation}
 						onClick={setSelected.bind(null, section.navButton.name)}
 						selected={selected === section.navButton.name}
+						wasPressed={wasPressed === section.navButton.name}
+						unsetPressed={() => setWasPressed("")}
 					>
 						{section.navButton.name}
 					</Button>

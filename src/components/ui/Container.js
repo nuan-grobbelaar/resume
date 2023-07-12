@@ -1,6 +1,9 @@
-import { maxHeight } from "@mui/system";
-import React, { useEffect } from "react";
 import styles from "../../styles.less";
+
+import React, { useEffect, useRef } from "react";
+import { useDispatch } from "react-redux";
+import { navActions } from "../../store/nav.js";
+import useOnScreen from "../../hooks/useOnScreen";
 
 function ContainerItem(props) {
 	const position = props.position ? props.position : { xPos: 0, yPos: 0 };
@@ -22,28 +25,54 @@ function ContainerItem(props) {
 }
 
 export default function Container(props) {
-	const maxWidth = props.innerRef.current?.offsetWidth;
-	const maxHeight = props.innerRef.current?.offsetHeight;
+	const ref = useRef(null);
 
-	console.log("width", maxWidth, maxHeight);
+	const maxWidth = ref.current?.offsetWidth;
+	const maxHeight = ref.current?.offsetHeight;
 
-	const containerItems = React.Children.map(props.children, (child) => {
-		if (React.isValidElement(child)) {
-			return (
-				<ContainerItem
-					position={props.positions[child.props.id]}
-					containerIndex={props.index}
-					maxHeight={maxHeight}
-					maxWidth={maxWidth}
-				>
-					{child}
-				</ContainerItem>
-			);
-		}
-	});
+	const visibilityRef = useRef(null);
+	const isVisible = useOnScreen(visibilityRef);
+
+	const dispatch = useDispatch();
+
+	const setSelected = () => {
+		dispatch(navActions.setSelected(props.name));
+	};
+
+	useEffect(() => {
+		if (isVisible) setSelected();
+	}, [isVisible]);
+
+	const containerItems = [
+		<ContainerItem
+			position={{ xPos: 0.5, yPos: 0.5 }}
+			containerIndex={props.index}
+			maxHeight={maxHeight}
+			maxWidth={maxWidth}
+		>
+			<div ref={visibilityRef}></div>
+		</ContainerItem>,
+	];
+
+	containerItems.push(
+		React.Children.map(props.children, (child) => {
+			if (React.isValidElement(child)) {
+				return (
+					<ContainerItem
+						position={props.positions[child.props.id]}
+						containerIndex={props.index}
+						maxHeight={maxHeight}
+						maxWidth={maxWidth}
+					>
+						{child}
+					</ContainerItem>
+				);
+			}
+		})
+	);
 
 	return (
-		<div ref={props.innerRef} className={styles.container}>
+		<div ref={ref} className={styles.container}>
 			{containerItems}
 		</div>
 	);

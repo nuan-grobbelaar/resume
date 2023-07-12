@@ -4,13 +4,8 @@ import Container from "./ui/Container";
 import useOnScreen from "../hooks/useOnScreen";
 
 const AboutMe = (props) => {
-	const ref = useRef(null);
-	const isVisible = useOnScreen(ref);
-
-	console.log("About", "isVisible", isVisible);
-
 	return (
-		<Container innerRef={ref} index={props.index} positions={{}}>
+		<Container index={props.index} positions={{}} name="about">
 			<Card
 				color={"#E32BD1"}
 				title={"Education"}

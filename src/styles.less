@@ -233,6 +233,18 @@ li {
       }
     }
 
+    &.selected {
+      transform: translateX(2px);
+      transform: translateY(2px);
+
+      .brutalButton__container__button::after {
+        top: 2px;
+        left: 2px;
+        right: -3.5px;
+        bottom: -3.5px;
+      }
+    }
+
     &:hover {
       transform: translateX(2px);
       transform: translateY(2px);
