@@ -14,7 +14,9 @@ const NavBar = (props) => {
 
 	const setSelected = (section) => {
 		setWasPressed(section);
-		dispatch(navActions.setPage(section));
+		setTimeout(() => {
+			dispatch(navActions.setPage(section));
+		}, 800);
 	};
 
 	return (

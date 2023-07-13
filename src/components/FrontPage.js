@@ -9,9 +9,21 @@ import useOnScreen from "../hooks/useOnScreen";
 import me from "../resources/me.jpg";
 
 export default function FrontPage(props) {
+	const positions = {
+		me: {
+			xPos: 0.7,
+			yPos: 0.3,
+		},
+	};
+
 	return (
-		<Container index={props.index} positions={{}} name="home">
-			<MediaCard src={me} rotate={"2"} title={"Table Mountain"}></MediaCard>
+		<Container index={props.index} positions={positions} name="home">
+			<MediaCard
+				id="me"
+				src={me}
+				rotate={"2"}
+				title={"Table Mountain"}
+			></MediaCard>
 		</Container>
 	);
 }

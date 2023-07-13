@@ -14,7 +14,7 @@ const BrutalButton = (props) => {
 			setTimeout(() => {
 				setShowArrow(false);
 				props.unsetPressed();
-			}, 1000);
+			}, 800);
 		}
 	}, [props.wasPressed]);
 

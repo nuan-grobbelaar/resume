@@ -9,7 +9,7 @@ import NavBar from "./components/ui/NavBar";
 import FrontPage from "./components/FrontPage";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
-import AboutMe from "./components/AboutMe";
+import Contact from "./components/Contact";
 
 function App() {
 	const dispatch = useDispatch();
@@ -50,14 +50,14 @@ function App() {
 			},
 			section: <Skills index={2} />,
 		},
-		about: {
+		contact: {
 			ref: about,
 			navButton: {
-				name: "about",
+				name: "contact",
 				color: "#F13A3A",
 				rotation: -1,
 			},
-			section: <AboutMe index={3} />,
+			section: <Contact index={3} />,
 		},
 	};
 

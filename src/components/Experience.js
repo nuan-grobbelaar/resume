@@ -122,7 +122,7 @@ export default function Experience(props) {
 			</Card>
 
 			<span id="talDates" className={styles["experience__dates"]}>
-				October 2022 - Current
+				November 2022 - Current
 			</span>
 			<Card
 				id="tal"
@@ -133,7 +133,7 @@ export default function Experience(props) {
 				summary={
 					"My time at Mezzanine has given me a great appreciation for the impact that new technology can have when introduced in developing countries."
 				}
-				rotate={"2"}
+				rotate={"0.25"}
 				tags={["Java", "Vue.js", "PostgreSQL", "HTML", "CSS", "Docker"]}
 			>
 				<p className="mt-1">
