@@ -1,4 +1,4 @@
-import styles from "../styles.less";
+import "../styles.less";
 import Container from "./ui/Container";
 import Card from "./cards/Card";
 import useOnScreen from "../hooks/useOnScreen";
@@ -44,7 +44,7 @@ export default function Experience(props) {
 	return (
 		<Container index={props.index} positions={positions} name="experience">
 			{/* <Grid columns={3} rows={2}> */}
-			<span id="aciDates" className={styles["experience__dates"]}>
+			<span id="aciDates" className="experience__dates">
 				February 2019 - May 2021
 			</span>
 			<ExperienceArrow id="aciArrow" />
@@ -89,7 +89,7 @@ export default function Experience(props) {
 				</ul>
 			</Card>
 
-			<span id="mezzDates" className={styles["experience__dates"]}>
+			<span id="mezzDates" className="experience__dates">
 				June 2021 - October 2022
 			</span>
 			<ExperienceArrow2 id="mezzArrow" />
@@ -121,7 +121,7 @@ export default function Experience(props) {
 				</p>
 			</Card>
 
-			<span id="talDates" className={styles["experience__dates"]}>
+			<span id="talDates" className="experience__dates">
 				November 2022 - Current
 			</span>
 			<Card

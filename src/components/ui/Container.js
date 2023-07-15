@@ -1,4 +1,4 @@
-import styles from "../../styles.less";
+import "../../styles.less";
 
 import React, { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
@@ -10,7 +10,7 @@ function ContainerItem(props) {
 
 	return (
 		<div
-			className={styles["container__item"]}
+			className="container__item"
 			style={{
 				top: `${
 					props.containerIndex * props.maxHeight +
@@ -29,6 +29,10 @@ export default function Container(props) {
 
 	const maxWidth = ref.current?.offsetWidth;
 	const maxHeight = ref.current?.offsetHeight;
+
+	useEffect(() => {
+		if (props.setContainerSize) props.setContainerSize({ maxWidth, maxHeight });
+	}, [maxHeight, maxWidth]);
 
 	const visibilityRef = useRef(null);
 	const isVisible = useOnScreen(visibilityRef);
@@ -72,7 +76,7 @@ export default function Container(props) {
 	);
 
 	return (
-		<div ref={ref} className={styles.container}>
+		<div ref={ref} className="container">
 			{containerItems}
 		</div>
 	);

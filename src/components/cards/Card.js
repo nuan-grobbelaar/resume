@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import Tag from "../ui/Tag";
 
-import styles from "../../styles.less";
+import "../../styles.less";
 
 const BrutalCard = (props) => {
 	const [showModal, setShowModal] = useState(false);
@@ -20,44 +20,36 @@ const BrutalCard = (props) => {
 	console.log(tags);
 
 	const cardContent = (
-		<div
-			className={
-				styles.card__content +
-				(showModal ? "" : " " + styles["flex-col-container"])
-			}
-		>
+		<div className={"card__content" + (showModal ? "" : " flex-col-container")}>
 			<div
-				className={styles["card__content__title-bar"]}
+				className="card__content__title-bar"
 				style={{ backgroundColor: props.color }}
 			>
 				{props.title}
 			</div>
-			<div className={styles["card__content__card-body"]}>
-				<div className={styles["card__content__card-body__heading"]}>
-					{props.heading}
-				</div>
-				<div className={styles["card__content__card-body__accent-text"]}>
+			<div className="card__content__card-body">
+				<div className="card__content__card-body__heading">{props.heading}</div>
+				<div className="card__content__card-body__accent-text">
 					{showModal ? props.accentText : null}
 				</div>
 				{showModal ? props.children : props.summary}
 			</div>
-			<div className={styles["card__content__card-body__tags"]}>{tags}</div>
+			<div className="card__content__card-body__tags">{tags}</div>
 		</div>
 	);
 
 	return (
 		<>
-			{showModal && (
+			{showModal ? (
 				<Modal
-					className={styles["card--modal"]}
+					className={"card--modal"}
 					handleClose={setShowModal.bind(null, false)}
 				>
 					{cardContent}
 				</Modal>
-			)}
-			{!showModal && (
+			) : (
 				<div
-					className={styles.card + " " + props.className}
+					className={"card " + props.className}
 					style={{ transform: "rotate(" + props.rotate + "deg)" }}
 					onClick={toggleInfo}
 				>

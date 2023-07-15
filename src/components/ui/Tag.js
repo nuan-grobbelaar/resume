@@ -1,11 +1,11 @@
-import styles from "../../styles.less";
+import "../../styles.less";
 
 const Tag = (props) => {
 	return (
-		<div className={styles["tag"]}>
-			<div className={styles["tag__container"]}>
+		<div className="tag">
+			<div className="tag__container">
 				<div style={{ transform: "rotate(" + props.rotate + "deg)" }}>
-					<a className={styles["tag__container__text"]}>{props.children}</a>
+					<a className="tag__container__text">{props.children}</a>
 				</div>
 			</div>
 		</div>

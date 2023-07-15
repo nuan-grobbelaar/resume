@@ -1,4 +1,4 @@
-import styles from "../../styles.less";
+import "../../styles.less";
 
 const ExperienceArrow = (props) => {
 	return (

@@ -360,3 +360,51 @@ li {
   font-size: 1.2em;
 }
 
+.deck {
+  position: absolute;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
+
+.deck > div {
+  background-size: auto 85%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 45vh;
+  max-width: 150px;
+  height: 85vh;
+  max-height: 285px;
+  will-change: transform;
+  border-radius: 10px;
+
+  .card {
+    z-index: 20 !important;
+
+    .card__content:after {
+      top: 10px !important;
+      left: 10px !important;
+      right: -11px !important;
+      bottom: -11px !important;
+    }
+  }
+
+  .card.no-shadow {
+    z-index: 20 !important;
+    
+    .card__content:after {
+      top: 0px !important;
+      left: 0px !important;
+      right: 0px !important;
+      bottom: 0px !important;
+    }
+  }
+}
+
+.prevent-select {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none; /* Standard syntax */
+}

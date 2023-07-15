@@ -1,5 +1,3 @@
-import styles from "../../styles.less";
-
 const ExperienceArrow2 = (props) => {
 	return (
 		<div className={props.className}>

@@ -1,4 +1,4 @@
-import styles from "../../styles.less";
+import "../../styles.less";
 import Button from "./Button";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -20,9 +20,9 @@ const NavBar = (props) => {
 	};
 
 	return (
-		<Box className={styles.navBar}>
-			<Box className={styles["navBar__name-label"]}>
-				<Typography className={styles.text} variant="h1">
+		<Box className="navBar">
+			<Box className="navBar__name-label">
+				<Typography className="text" variant="h1">
 					NUAN
 				</Typography>
 			</Box>

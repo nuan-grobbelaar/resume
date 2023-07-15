@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "./Modal";
 
-import styles from "../../styles.less";
+import "../../styles.less";
 
 const MediaCard = (props) => {
 	const [showModal, setShowModal] = useState(false);
@@ -16,22 +16,22 @@ const MediaCard = (props) => {
 		<>
 			{showModal && (
 				<Modal
-					className={styles["card--modal"]}
+					className="card--modal"
 					handleClose={setShowModal.bind(null, false)}
 				>
-					<div className={styles.card__content}>
-						<div className={styles["card__content__card-body--media"]}></div>
+					<div className="card__content">
+						<div className="card__content__card-body--media"></div>
 					</div>
 				</Modal>
 			)}
 			{!showModal && (
 				<div
-					className={styles.card + " " + props.className}
+					className={"card " + props.className}
 					style={{ transform: "rotate(" + props.rotate + "deg)" }}
 					onClick={toggleInfo}
 				>
-					<div className={styles.card__content}>
-						<div className={styles["card__content__card-body--media"]}>
+					<div className="card__content">
+						<div className="card__content__card-body--media">
 							<img
 								src={props.src}
 								alt="Card Media"
@@ -39,9 +39,7 @@ const MediaCard = (props) => {
 								height="100%"
 							/>
 						</div>
-						<div className={styles["card__content__title-bar"]}>
-							{props.title}
-						</div>
+						<div className="card__content__title-bar">{props.title}</div>
 					</div>
 				</div>
 			)}

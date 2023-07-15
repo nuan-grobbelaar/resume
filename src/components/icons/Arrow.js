@@ -1,11 +1,11 @@
-import styles from "../../styles.less";
+import "../../styles.less";
 
 const Arrow = (props) => {
 	return (
 		<div className={props.className}>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 500 600">
 				<path
-					id={styles["arrow-icon-path"]}
+					id="arrow-icon-path"
 					fill="none"
 					stroke="#000"
 					stroke-miterlimit="20"

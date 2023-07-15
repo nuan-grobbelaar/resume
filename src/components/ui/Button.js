@@ -1,4 +1,4 @@
-import styles from "../../styles.less";
+import "../../styles.less";
 
 import Arrow from "../icons/Arrow";
 
@@ -19,32 +19,25 @@ const BrutalButton = (props) => {
 	}, [props.wasPressed]);
 
 	return (
-		<div className={styles["brutalButton"]}>
+		<div className="brutalButton">
 			<Box
 				className={
-					styles["brutalButton__container"] +
-					(props.selected ? " " + styles.selected : "")
+					"brutalButton__container" + (props.selected ? " selected" : "")
 				}
 			>
 				<Box style={{ transform: "rotate(" + props.rotate + "deg)" }}>
 					<Button
-						className={
-							styles["brutalButton__container__button"] + " " + props.className
-						}
+						className={"brutalButton__container__button " + props.className}
 						style={{ backgroundColor: props.color }}
 						onClick={props.onClick}
 					>
-						<Typography
-							className={styles["brutalButton__container__button__text"]}
-						>
+						<Typography className={"brutalButton__container__button__text"}>
 							{props.children}
 						</Typography>
 					</Button>
 				</Box>
 			</Box>
-			{showArrow && (
-				<Arrow className={styles["brutalButton__selected-arrow"]} />
-			)}
+			{showArrow && <Arrow className={"brutalButton__selected-arrow"} />}
 		</div>
 	);
 };
