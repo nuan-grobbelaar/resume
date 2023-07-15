@@ -21,27 +21,39 @@ export default function ContactCard(props) {
 
 	const form = (
 		<div className="contactForm">
-			<div className="contactForm__field">
-				<div className="contactForm__field__container">
-					<input type="text"></input>
+			<div className="contactForm__container">
+				<div className="shadow">
+					<div className="contactForm__container__field">
+						<span>Name:</span>
+						<input type="text"></input>
+					</div>
 				</div>
 			</div>
 
-			<div className="contactForm__field">
-				<div className="contactForm__field__container">
-					<input type="text"></input>
+			<div className="contactForm__container">
+				<div className="shadow">
+					<div className="contactForm__container__field">
+						<span>Email:</span>
+						<input type="text"></input>
+					</div>
 				</div>
 			</div>
 
-			<div className="contactForm__field">
-				<div className="contactForm__field__container">
-					<input type="text"></input>
+			<div className="contactForm__container">
+				<div className="shadow">
+					<div className="contactForm__container__field">
+						<span>Subject:</span>
+						<input type="text"></input>
+					</div>
 				</div>
 			</div>
 
-			<div className="contactForm__field">
-				<div className="contactForm__field__container--textarea">
-					<textarea rows="10" type="text"></textarea>{" "}
+			<div className="contactForm__container">
+				<div className="shadow--textarea">
+					<div className="contactForm__container__field">
+						<span>Message:</span>
+						<textarea rows="10" type="text"></textarea>
+					</div>
 				</div>
 			</div>
 		</div>

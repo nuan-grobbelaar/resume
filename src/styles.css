@@ -358,12 +358,15 @@ li {
   /* Standard syntax */
 }
 .contactForm__field_mixin {
+  display: flex;
+  flex-direction: column;
+  height: auto;
   width: 500px;
   border: 1.5px solid #000 !important;
   border-radius: 2px !important;
-  outline: none;
   font-size: 16px;
   font-family: 'Inria Sans', sans-serif !important;
+  background-color: #fff;
 }
 .contactForm {
   display: flex;
@@ -371,26 +374,37 @@ li {
   height: auto;
   align-items: center;
 }
-.contactForm .contactForm__field {
+.contactForm .contactForm__container {
   margin-bottom: 0.5em;
   position: relative;
   z-index: 10 !important;
   width: fit-content;
 }
-.contactForm .contactForm__field .contactForm__field__container {
+.contactForm .contactForm__container .shadow {
   width: fit-content;
 }
-.contactForm .contactForm__field .contactForm__field__container input {
+.contactForm .contactForm__container .shadow .contactForm__container__field {
+  display: flex;
+  flex-direction: column;
+  height: auto;
   width: 500px;
   border: 1.5px solid #000 !important;
   border-radius: 2px !important;
-  outline: none;
   font-size: 16px;
   font-family: 'Inria Sans', sans-serif !important;
-  padding: 0 0.5em;
+  background-color: #fff;
+  padding: 0.5em 0.5em 0.2em 0.5em;
   height: 2.5em;
 }
-.contactForm .contactForm__field .contactForm__field__container:after {
+.contactForm .contactForm__container .shadow .contactForm__container__field span {
+  padding-left: 0.1em;
+  font-family: 'Bebas Neue', sans-serif !important;
+}
+.contactForm .contactForm__container .shadow .contactForm__container__field input {
+  outline: none;
+  border: none;
+}
+.contactForm .contactForm__container .shadow:after {
   content: '' !important;
   position: absolute !important;
   background-color: #000 !important;
@@ -402,19 +416,29 @@ li {
   border-radius: 2px !important;
   bottom: -3px;
 }
-.contactForm .contactForm__field .contactForm__field__container--textarea {
+.contactForm .contactForm__container .shadow--textarea {
   width: fit-content;
 }
-.contactForm .contactForm__field .contactForm__field__container--textarea textarea {
+.contactForm .contactForm__container .shadow--textarea .contactForm__container__field {
+  display: flex;
+  flex-direction: column;
+  height: auto;
   width: 500px;
   border: 1.5px solid #000 !important;
   border-radius: 2px !important;
-  outline: none;
   font-size: 16px;
   font-family: 'Inria Sans', sans-serif !important;
+  background-color: #fff;
   padding: 0.5em;
 }
-.contactForm .contactForm__field .contactForm__field__container--textarea:after {
+.contactForm .contactForm__container .shadow--textarea .contactForm__container__field span {
+  font-family: 'Bebas Neue', sans-serif !important;
+}
+.contactForm .contactForm__container .shadow--textarea .contactForm__container__field textarea {
+  outline: none;
+  border: none;
+}
+.contactForm .contactForm__container .shadow--textarea:after {
   content: '' !important;
   position: absolute !important;
   background-color: #000 !important;
@@ -424,5 +448,5 @@ li {
   bottom: -3.5px;
   z-index: -1 !important;
   border-radius: 2px !important;
-  bottom: -1px;
+  bottom: -3px;
 }
