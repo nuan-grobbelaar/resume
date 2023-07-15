@@ -17,6 +17,18 @@
   }
 }
 
+.brutal_shadow_mixin {
+  content:'' !important;
+  position: absolute !important;
+  background-color:#000 !important;
+  top: 2px;
+  left: 2px;
+  right: -3.5px;
+  bottom: -3.5px;
+  z-index: -1 !important;
+  border-radius: 2px !important;
+}
+
 .flex-col-container {
   display: flex;
   flex-direction: column;
@@ -212,7 +224,6 @@ li {
 
     .brutalButton__container__button {
       /* background-color: #C637E3 !important; */
-      border-radius: 0 !important;
       padding: 10px !important;
       padding-bottom: 8px !important;
       border: 2px solid #000 !important;
@@ -393,7 +404,7 @@ li {
 
   .card.no-shadow {
     z-index: 20 !important;
-    
+
     .card__content:after {
       top: 0px !important;
       left: 0px !important;
@@ -407,4 +418,54 @@ li {
   -webkit-user-select: none; /* Safari */
   -ms-user-select: none; /* IE 10 and IE 11 */
   user-select: none; /* Standard syntax */
+}
+
+.contactForm__field_mixin {
+  width: 500px;
+  border: 1.5px solid #000 !important;
+  border-radius: 2px !important;
+  outline: none;
+  font-size: 16px;
+  font-family: @secondary-font;
+}
+
+.contactForm {
+  .flex-col-container();
+  align-items: center;
+
+  .contactForm__field {
+    margin-bottom: 0.5em;
+    position: relative;
+    z-index: 10 !important;
+    width: fit-content;
+
+    .contactForm__field__container {
+      width: fit-content;
+
+      input {
+        .contactForm__field_mixin();
+        padding: 0 0.5em;
+        height: 2.5em;
+      }
+  
+      &:after {
+        .brutal_shadow_mixin();
+        bottom: -3px;
+      }
+    }
+
+    .contactForm__field__container--textarea {
+      width: fit-content;
+
+      textarea {
+        .contactForm__field_mixin();
+        padding: 0.5em;
+      }
+  
+      &:after {
+        .brutal_shadow_mixin();
+        bottom: -1px;
+      }
+    }
+  }
 }

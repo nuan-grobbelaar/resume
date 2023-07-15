@@ -10,11 +10,39 @@ export default function ContactCard(props) {
 
 	console.log("rot", "card", props.rotate);
 
-	const cardContent = (
+	const cardContent = (props) => (
 		<div className="card__content">
 			<div className="card__content__card-body">
 				<div className="card__content__card-body__heading">{props.heading}</div>
 				{props.children}
+			</div>
+		</div>
+	);
+
+	const form = (
+		<div className="contactForm">
+			<div className="contactForm__field">
+				<div className="contactForm__field__container">
+					<input type="text"></input>
+				</div>
+			</div>
+
+			<div className="contactForm__field">
+				<div className="contactForm__field__container">
+					<input type="text"></input>
+				</div>
+			</div>
+
+			<div className="contactForm__field">
+				<div className="contactForm__field__container">
+					<input type="text"></input>
+				</div>
+			</div>
+
+			<div className="contactForm__field">
+				<div className="contactForm__field__container--textarea">
+					<textarea rows="10" type="text"></textarea>{" "}
+				</div>
 			</div>
 		</div>
 	);
@@ -26,7 +54,7 @@ export default function ContactCard(props) {
 					className="card--modal"
 					handleClose={setShowModal.bind(null, false)}
 				>
-					{cardContent}
+					{cardContent({ ...props, children: form })}
 				</Modal>
 			) : (
 				<div
@@ -35,7 +63,7 @@ export default function ContactCard(props) {
 					}
 					style={{ transform: "rotate(" + props.rotate + "deg)" }}
 				>
-					{cardContent}
+					{cardContent(props)}
 				</div>
 			)}
 		</>
