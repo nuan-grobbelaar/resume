@@ -1,6 +1,6 @@
 import "../../styles.less";
 
-import React, { useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useDispatch } from "react-redux";
 import { navActions } from "../../store/nav.js";
 import useOnScreen from "../../hooks/useOnScreen";
@@ -27,15 +27,15 @@ function ContainerItem(props) {
 export default function Container(props) {
 	const ref = useRef(null);
 
+	const visibilityRef = useRef(null);
+	const isVisible = useOnScreen(visibilityRef);
+
 	const maxWidth = ref.current?.offsetWidth;
 	const maxHeight = ref.current?.offsetHeight;
 
 	useEffect(() => {
 		if (props.setContainerSize) props.setContainerSize({ maxWidth, maxHeight });
 	}, [maxHeight, maxWidth]);
-
-	const visibilityRef = useRef(null);
-	const isVisible = useOnScreen(visibilityRef);
 
 	const dispatch = useDispatch();
 
@@ -47,7 +47,7 @@ export default function Container(props) {
 		if (isVisible) setSelected();
 	}, [isVisible]);
 
-	const containerItems = [
+	const VisibilityElement = (
 		<ContainerItem
 			position={{ xPos: 0.5, yPos: 0.5 }}
 			containerIndex={props.index}
@@ -55,25 +55,34 @@ export default function Container(props) {
 			maxWidth={maxWidth}
 		>
 			<div ref={visibilityRef}></div>
-		</ContainerItem>,
-	];
-
-	containerItems.push(
-		React.Children.map(props.children, (child) => {
-			if (React.isValidElement(child)) {
-				return (
-					<ContainerItem
-						position={props.positions[child.props.id]}
-						containerIndex={props.index}
-						maxHeight={maxHeight}
-						maxWidth={maxWidth}
-					>
-						{child}
-					</ContainerItem>
-				);
-			}
-		})
+		</ContainerItem>
 	);
+
+	const containerItems = useMemo(() => {
+		const containerItems = [VisibilityElement];
+
+		containerItems.push(
+			React.Children.map(props.children, (child) => {
+				console.log(props.name);
+				if (React.isValidElement(child)) {
+					return (
+						<ContainerItem
+							position={props.positions[child.props.id]}
+							containerIndex={props.index}
+							maxHeight={maxHeight}
+							maxWidth={maxWidth}
+						>
+							{child}
+						</ContainerItem>
+					);
+				}
+			})
+		);
+
+		return containerItems;
+	}, [props.positions, props.children, props.index, maxHeight, maxWidth]);
+
+	// console.log("container", containerItems);
 
 	return (
 		<div ref={ref} className="container">
