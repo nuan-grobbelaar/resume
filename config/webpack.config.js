@@ -472,20 +472,12 @@ module.exports = function (webpackEnv) {
 						{
 							test: cssRegex,
 							exclude: cssModuleRegex,
-							use: getStyleLoaders({
-								importLoaders: 1,
-								sourceMap: isEnvProduction
-									? shouldUseSourceMap
-									: isEnvDevelopment,
-								modules: {
-									mode: "icss",
-								},
-							}),
+							use: [MiniCssExtractPlugin.loader, "css-loader"],
 							// Don't consider CSS imports dead code even if the
 							// containing package claims to have no side effects.
 							// Remove this when webpack adds a warning or an error for this.
 							// See https://github.com/webpack/webpack/issues/6571
-							sideEffects: true,
+							// sideEffects: true,
 						},
 						// Adds support for CSS Modules (https://github.com/css-modules/css-modules)
 						// using the extension .module.css
@@ -578,6 +570,7 @@ module.exports = function (webpackEnv) {
 			].filter(Boolean),
 		},
 		plugins: [
+			new MiniCssExtractPlugin(),
 			// Generates an `index.html` file with the <script> injected.
 			new HtmlWebpackPlugin(
 				Object.assign(

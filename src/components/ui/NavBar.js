@@ -1,4 +1,4 @@
-import "../../styles.less";
+import "../../styles.css";
 import Button from "./Button";
 
 import { useSelector, useDispatch } from "react-redux";

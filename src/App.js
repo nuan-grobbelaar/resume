@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "./components/ui/NavBar";
@@ -77,6 +77,18 @@ function App() {
 		}
 	}, [page]);
 
+	const renderedSections = useMemo(() => {
+		console.log("rendered", sections);
+		return (
+			<>
+				<NavBar sections={sections} />
+				{Object.values(sections).map((section) => {
+					return <section ref={section.ref}>{section.section}</section>;
+				})}
+			</>
+		);
+	}, []);
+
 	return (
 		<div className="App">
 			{showCover ? (
@@ -84,12 +96,7 @@ function App() {
 					<Cover />
 				</section>
 			) : (
-				<>
-					<NavBar sections={sections} cover={showCover} />
-					{Object.values(sections).map((section) => {
-						return <section ref={section.ref}>{section.section}</section>;
-					})}
-				</>
+				renderedSections
 			)}
 		</div>
 	);

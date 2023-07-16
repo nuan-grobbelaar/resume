@@ -1,4 +1,4 @@
-import "../styles.less";
+import "../styles.css";
 import { useEffect, useRef } from "react";
 import Container from "./ui/Container";
 import Card, { CARD_SIZE } from "./cards/Card";

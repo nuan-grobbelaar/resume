@@ -1,4 +1,4 @@
-import "../../styles.less";
+import "../../styles.css";
 
 const Modal = (props) => {
 	document.body.style.overflow = "hidden";

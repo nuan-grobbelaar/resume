@@ -54,6 +54,9 @@ li {
 .container .container__item {
   position: absolute;
 }
+.container .hidden {
+  display: none;
+}
 .overlay {
   z-index: 100;
   overflow-y: hidden;

@@ -1,4 +1,4 @@
-import "../../styles.less";
+import "../../styles.css";
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useDispatch } from "react-redux";

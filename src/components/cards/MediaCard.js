@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Modal from "./Modal";
 
-import "../../styles.less";
+import "../../styles.css";
 
 const MediaCard = (props) => {
 	const [showModal, setShowModal] = useState(false);
