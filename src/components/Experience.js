@@ -76,7 +76,11 @@ export default function Experience(props) {
 					xPos: -100,
 					text: "Feb 2019 - May 2021",
 				}}
-				icon={{ xPos: CARD_SIZE.width, yPos: 50, icon: <ExperienceArrow /> }}
+				icon={{
+					xPos: CARD_SIZE.width,
+					yPos: 50,
+					icon: <ExperienceArrow className="experience-arrow-1" />,
+				}}
 			>
 				<Card
 					color={"#99E32B"}

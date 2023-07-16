@@ -37,6 +37,7 @@ const MediaCard = (props) => {
 								alt="Card Media"
 								width="auto"
 								height="100%"
+								draggable="false"
 							/>
 						</div>
 						<div className="card__content__title-bar">{props.title}</div>
