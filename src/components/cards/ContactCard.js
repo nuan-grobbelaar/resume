@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Modal from "./Modal";
 import Tag from "../ui/Tag";
 
@@ -10,52 +10,69 @@ export default function ContactCard(props) {
 
 	console.log("rot", "card", props.rotate);
 
+	const nameRef = useRef();
+	const emailRef = useRef();
+	const subjectRef = useRef();
+	const messageRef = useRef();
+
+	const click = (ref) => {
+		ref.current.focus();
+	};
+
 	const cardContent = (props) => (
 		<div className="card__content">
-			<div className="card__content__card-body">
-				<div className="card__content__card-body__heading">{props.heading}</div>
-				{props.children}
-			</div>
+			<div className="card__content__card-body">{props.children}</div>
 		</div>
 	);
 
+	const formValues = (
+		<div className="card__content flex-col-container">
+			{messageRef.current?.value && (
+				<>
+					<div className="card__content__card-body contact-card-message">
+						<span>{messageRef.current?.value.substring(0, 360) + "..."}</span>
+					</div>
+					<div className="contact-card-name">
+						<span>{"- " + nameRef.current?.value}</span>
+					</div>
+				</>
+			)}
+		</div>
+	);
+
+	const FormField = (props) => {
+		return (
+			<div
+				className="contactForm__container"
+				onClick={() => click(props.children.ref)}
+			>
+				<div className="shadow">
+					<div className="contactForm__container__field">
+						<span>{props.label}</span>
+						{props.children}
+					</div>
+				</div>
+			</div>
+		);
+	};
+
 	const form = (
 		<div className="contactForm">
-			<div className="contactForm__container">
-				<div className="shadow">
-					<div className="contactForm__container__field">
-						<span>Name:</span>
-						<input type="text"></input>
-					</div>
-				</div>
-			</div>
+			<FormField label="Name">
+				<input ref={nameRef} type="text" />
+			</FormField>
 
-			<div className="contactForm__container">
-				<div className="shadow">
-					<div className="contactForm__container__field">
-						<span>Email:</span>
-						<input type="text"></input>
-					</div>
-				</div>
-			</div>
+			<FormField label="Email">
+				<input ref={emailRef} type="text" />
+			</FormField>
 
-			<div className="contactForm__container">
-				<div className="shadow">
-					<div className="contactForm__container__field">
-						<span>Subject:</span>
-						<input type="text"></input>
-					</div>
-				</div>
-			</div>
+			<FormField label="Subject">
+				<input ref={subjectRef} type="text" />
+			</FormField>
 
-			<div className="contactForm__container">
-				<div className="shadow--textarea">
-					<div className="contactForm__container__field">
-						<span>Message:</span>
-						<textarea rows="10" type="text"></textarea>
-					</div>
-				</div>
-			</div>
+			<FormField label="Message">
+				<textarea ref={messageRef} spellcheck="false" rows="20" type="text" />
+			</FormField>
 		</div>
 	);
 
@@ -75,7 +92,7 @@ export default function ContactCard(props) {
 					}
 					style={{ transform: "rotate(" + props.rotate + "deg)" }}
 				>
-					{cardContent(props)}
+					{formValues}
 				</div>
 			)}
 		</>

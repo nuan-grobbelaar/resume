@@ -121,7 +121,7 @@ li {
       font-family: @secondary-font;
 
       .card__content__card-body__heading {
-        font-size: 1.35m;
+        font-size: 1.35em;
       }
     }
 
@@ -371,16 +371,18 @@ li {
   font-size: 1.2em;
 }
 
-.deck {
+.deck-card {
   position: absolute;
   will-change: transform;
   display: flex;
   align-items: center;
   justify-content: center;
   touch-action: none;
+  z-index: 20 !important;
 }
 
-.deck > div {
+.deck-card > div {
+  .prevent-select();
   background-size: auto 85%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -392,8 +394,6 @@ li {
   border-radius: 10px;
 
   .card {
-    z-index: 20 !important;
-
     .card__content:after {
       top: 10px !important;
       left: 10px !important;
@@ -420,22 +420,13 @@ li {
   user-select: none; /* Standard syntax */
 }
 
-.contactForm__field_mixin {
-  .flex-col-container();
-  width: 500px;
-  border: 1.5px solid #000 !important;
-  border-radius: 2px !important;
-  font-size: 16px;
-  font-family: @secondary-font;
-  background-color: #fff;
-}
-
 .contactForm {
   .flex-col-container();
+  margin-top: 1.5em;
   align-items: center;
 
   .contactForm__container {
-    margin-bottom: 0.5em;
+    margin-bottom: 0.75em;
     position: relative;
     z-index: 10 !important;
     width: fit-content;
@@ -444,9 +435,16 @@ li {
       width: fit-content;
 
       .contactForm__container__field {
-        .contactForm__field_mixin();
+        .flex-col-container();
+        .prevent-select();
+        width: 500px;
+        border: 1.5px solid #000 !important;
+        border-radius: 2px !important;
+        font-size: 16px;
+        font-family: @secondary-font;
+        background-color: #fff;
         padding: 0.5em 0.5em 0.2em 0.5em;
-        height: 2.5em;
+        
 
         span {
           padding-left: 0.1em;
@@ -454,29 +452,15 @@ li {
         }
 
         input {
-          outline: none;
-          border: none;
-        }
-      }
-  
-      &:after {
-        .brutal_shadow_mixin();
-        bottom: -3px;
-      }
-    }
-
-    .shadow--textarea {
-      width: fit-content;
-
-      .contactForm__container__field {
-        .contactForm__field_mixin();
-        padding: 0.5em;
-
-        span {
-          font-family: @main-font;
+          height: 1.5em;
         }
 
         textarea {
+          resize: none;
+          max-height: 310px;
+        }
+
+        input, textarea {
           outline: none;
           border: none;
         }
@@ -489,3 +473,27 @@ li {
     }
   }
 }
+
+.contact-card-message {
+  overflow-y: hidden;
+
+  span {
+    font-family: @secondary-font;
+    flex-grow: 1;
+  }
+}
+
+.contact-card-name {
+  .mt-auto();
+  .flex-row-container();
+  padding: 4px 0 12px 0;
+  
+  span {
+    margin-left: auto;
+    font-family: @main-font;
+    padding-right: 12px;
+    font-size: 18px;
+  }
+}
+
+

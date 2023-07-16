@@ -100,7 +100,7 @@ li {
   font-family: 'Inria Sans', sans-serif !important;
 }
 .card .card__content .card__content__card-body .card__content__card-body__heading {
-  font-size: 1.35m;
+  font-size: 1.35em;
 }
 .card .card__content .card__content__card-body--media {
   height: 250px;
@@ -312,15 +312,22 @@ li {
   font-family: 'Permanent Marker', sans-serif !important;
   font-size: 1.2em;
 }
-.deck {
+.deck-card {
   position: absolute;
   will-change: transform;
   display: flex;
   align-items: center;
   justify-content: center;
   touch-action: none;
+  z-index: 20 !important;
 }
-.deck > div {
+.deck-card > div {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
   background-size: auto 85%;
   background-repeat: no-repeat;
   background-position: center center;
@@ -331,19 +338,16 @@ li {
   will-change: transform;
   border-radius: 10px;
 }
-.deck > div .card {
-  z-index: 20 !important;
-}
-.deck > div .card .card__content:after {
+.deck-card > div .card .card__content:after {
   top: 10px !important;
   left: 10px !important;
   right: -11px !important;
   bottom: -11px !important;
 }
-.deck > div .card.no-shadow {
+.deck-card > div .card.no-shadow {
   z-index: 20 !important;
 }
-.deck > div .card.no-shadow .card__content:after {
+.deck-card > div .card.no-shadow .card__content:after {
   top: 0px !important;
   left: 0px !important;
   right: 0px !important;
@@ -357,25 +361,15 @@ li {
   user-select: none;
   /* Standard syntax */
 }
-.contactForm__field_mixin {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 500px;
-  border: 1.5px solid #000 !important;
-  border-radius: 2px !important;
-  font-size: 16px;
-  font-family: 'Inria Sans', sans-serif !important;
-  background-color: #fff;
-}
 .contactForm {
   display: flex;
   flex-direction: column;
   height: auto;
+  margin-top: 1.5em;
   align-items: center;
 }
 .contactForm .contactForm__container {
-  margin-bottom: 0.5em;
+  margin-bottom: 0.75em;
   position: relative;
   z-index: 10 !important;
   width: fit-content;
@@ -387,6 +381,12 @@ li {
   display: flex;
   flex-direction: column;
   height: auto;
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
   width: 500px;
   border: 1.5px solid #000 !important;
   border-radius: 2px !important;
@@ -394,13 +394,20 @@ li {
   font-family: 'Inria Sans', sans-serif !important;
   background-color: #fff;
   padding: 0.5em 0.5em 0.2em 0.5em;
-  height: 2.5em;
 }
 .contactForm .contactForm__container .shadow .contactForm__container__field span {
   padding-left: 0.1em;
   font-family: 'Bebas Neue', sans-serif !important;
 }
 .contactForm .contactForm__container .shadow .contactForm__container__field input {
+  height: 1.5em;
+}
+.contactForm .contactForm__container .shadow .contactForm__container__field textarea {
+  resize: none;
+  max-height: 310px;
+}
+.contactForm .contactForm__container .shadow .contactForm__container__field input,
+.contactForm .contactForm__container .shadow .contactForm__container__field textarea {
   outline: none;
   border: none;
 }
@@ -416,37 +423,22 @@ li {
   border-radius: 2px !important;
   bottom: -3px;
 }
-.contactForm .contactForm__container .shadow--textarea {
-  width: fit-content;
+.contact-card-message {
+  overflow-y: hidden;
 }
-.contactForm .contactForm__container .shadow--textarea .contactForm__container__field {
-  display: flex;
-  flex-direction: column;
-  height: auto;
-  width: 500px;
-  border: 1.5px solid #000 !important;
-  border-radius: 2px !important;
-  font-size: 16px;
+.contact-card-message span {
   font-family: 'Inria Sans', sans-serif !important;
-  background-color: #fff;
-  padding: 0.5em;
+  flex-grow: 1;
 }
-.contactForm .contactForm__container .shadow--textarea .contactForm__container__field span {
+.contact-card-name {
+  margin-top: auto;
+  display: flex;
+  flex-direction: row;
+  padding: 4px 0 12px 0;
+}
+.contact-card-name span {
+  margin-left: auto;
   font-family: 'Bebas Neue', sans-serif !important;
-}
-.contactForm .contactForm__container .shadow--textarea .contactForm__container__field textarea {
-  outline: none;
-  border: none;
-}
-.contactForm .contactForm__container .shadow--textarea:after {
-  content: '' !important;
-  position: absolute !important;
-  background-color: #000 !important;
-  top: 2px;
-  left: 2px;
-  right: -3.5px;
-  bottom: -3.5px;
-  z-index: -1 !important;
-  border-radius: 2px !important;
-  bottom: -3px;
+  padding-right: 12px;
+  font-size: 18px;
 }
