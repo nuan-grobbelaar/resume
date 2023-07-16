@@ -26,41 +26,33 @@ export default function CardStack({ placeCard }) {
 		from: from(i),
 	}));
 
-	const bind = useDrag(
-		({
-			args: [index],
-			down,
-			movement: [mx, my],
-			direction: [xDir, yDir],
-			velocity,
-		}) => {
-			if (!down) {
-				placeCard(mx, my, mx / 100);
-				setCardCount(cardCount - 1);
-			}
-			api.start((i) => {
-				if (index !== i) return;
-
-				const x = down ? mx : 0;
-				const y = down ? my : 0;
-
-				if (down) setIsDown(index);
-				else if (isDown === index) setIsDown(null);
-
-				const rot = mx / 100;
-				const scale = down ? 1.1 : 1;
-
-				return {
-					x,
-					y,
-					rot,
-					scale,
-					delay: undefined,
-					config: { friction: 50, tension: down ? 800 : 500 },
-				};
-			});
+	const bind = useDrag(({ args: [index], down, movement: [mx, my] }) => {
+		if (!down) {
+			placeCard(mx, my, mx / 100);
+			setCardCount(cardCount - 1);
 		}
-	);
+		api.start((i) => {
+			if (index !== i) return;
+
+			const x = down ? mx : 0;
+			const y = down ? my : 0;
+
+			if (down) setIsDown(index);
+			else if (isDown === index) setIsDown(null);
+
+			const rot = mx / 100;
+			const scale = down ? 1.1 : 1;
+
+			return {
+				x,
+				y,
+				rot,
+				scale,
+				delay: undefined,
+				config: { friction: 50, tension: down ? 800 : 500 },
+			};
+		});
+	});
 
 	return (
 		<>

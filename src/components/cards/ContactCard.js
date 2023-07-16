@@ -1,6 +1,7 @@
 import { useState, useRef } from "react";
 import Modal from "./Modal";
 import Tag from "../ui/Tag";
+import { CARD_SIZE } from "./Card";
 
 import "../../styles.css";
 
@@ -26,7 +27,10 @@ export default function ContactCard(props) {
 	);
 
 	const formValues = (
-		<div className="card__content flex-col-container">
+		<div
+			className="card__content flex-col-container"
+			style={{ width: `${CARD_SIZE.width}px`, height: `${CARD_SIZE.height}px` }}
+		>
 			{messageRef.current?.value && (
 				<>
 					<div className="card__content__card-body contact-card-message">

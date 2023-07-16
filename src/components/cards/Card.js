@@ -4,6 +4,8 @@ import Tag from "../ui/Tag";
 
 import "../../styles.less";
 
+export const CARD_SIZE = { width: 250, height: 300 };
+
 const BrutalCard = (props) => {
 	const [showModal, setShowModal] = useState(false);
 
@@ -20,7 +22,10 @@ const BrutalCard = (props) => {
 	console.log(tags);
 
 	const cardContent = (
-		<div className={"card__content" + (showModal ? "" : " flex-col-container")}>
+		<div
+			className={"card__content" + (showModal ? "" : " flex-col-container")}
+			style={{ width: `${CARD_SIZE.width}px`, height: `${CARD_SIZE.height}px` }}
+		>
 			<div
 				className="card__content__title-bar"
 				style={{ backgroundColor: props.color }}
