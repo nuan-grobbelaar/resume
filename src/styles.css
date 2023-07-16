@@ -440,3 +440,16 @@ li {
   padding-right: 12px;
   font-size: 18px;
 }
+.experience-card {
+  position: relative;
+}
+.experience-card span {
+  position: absolute;
+}
+.experience-arrow-1 {
+  font-size: 1em;
+}
+.experience-arrow-1 svg {
+  width: 12vw;
+  height: 12vw;
+}
