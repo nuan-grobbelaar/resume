@@ -1,22 +1,29 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { navActions } from "./store/nav.js";
 
 import NavBar from "./components/ui/NavBar";
 import FrontPage from "./components/FrontPage";
 import Experience from "./components/Experience";
 import Skills from "./components/Skills";
 import Contact from "./components/Contact";
+import Cover from "./components/Cover";
 
 function App() {
 	const dispatch = useDispatch();
 	const page = useSelector((state) => state.nav.page);
 
+	const [showCover, setShowCover] = useState(true);
+
+	setTimeout(() => {
+		setShowCover(false);
+	}, 2000);
+
 	console.log("selectedPage", page);
 
+	const cover = useRef(null);
 	const home = useRef(null);
 	const experience = useRef(null);
 	const skills = useRef(null);
@@ -72,10 +79,18 @@ function App() {
 
 	return (
 		<div className="App">
-			<NavBar sections={sections} />
-			{Object.values(sections).map((section) => {
-				return <section ref={section.ref}>{section.section}</section>;
-			})}
+			{showCover ? (
+				<section ref={cover}>
+					<Cover />
+				</section>
+			) : (
+				<>
+					<NavBar sections={sections} cover={showCover} />
+					{Object.values(sections).map((section) => {
+						return <section ref={section.ref}>{section.section}</section>;
+					})}
+				</>
+			)}
 		</div>
 	);
 }
