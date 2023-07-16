@@ -20,12 +20,7 @@ const NavBar = (props) => {
 	};
 
 	return (
-		<Box className="navBar">
-			<Box className="navBar__name-label">
-				<Typography className="text" variant="h1">
-					NUAN
-				</Typography>
-			</Box>
+		<div className="navBar">
 			{Object.values(props.sections).map((section) => {
 				return (
 					<Button
@@ -40,7 +35,7 @@ const NavBar = (props) => {
 					</Button>
 				);
 			})}
-		</Box>
+		</div>
 	);
 };
 

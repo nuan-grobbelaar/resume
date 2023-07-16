@@ -254,6 +254,25 @@ li {
   font-family: 'Bebas Neue', sans-serif !important;
   font-size: 14px;
 }
+.name-label {
+  background-color: #000;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  padding-top: 3rem;
+  padding-bottom: 2.5rem;
+  margin-top: -1rem;
+  margin-right: auto;
+  margin-left: 5rem;
+}
+.name-label .text {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 5rem !important;
+  margin-bottom: -2rem !important;
+  padding-left: 2rem;
+  color: #fff;
+  margin: 0;
+  font-weight: 400;
+}
 .navBar {
   /* background-color: blueviolet; */
   width: 100%;
@@ -266,24 +285,6 @@ li {
   padding-top: 1rem;
   background-color: rgba(0, 0, 0, 0);
   z-index: 15;
-}
-.navBar .navBar__name-label {
-  background-color: #000;
-  padding-right: 2rem;
-  padding-bottom: 2rem;
-  padding-top: 1.5rem;
-  padding-bottom: 2.5rem;
-  margin-top: -1rem;
-  margin-right: auto;
-  margin-left: 5rem;
-}
-.navBar .navBar__name-label .text {
-  font-family: 'Bebas Neue', sans-serif !important;
-  font-size: 5rem !important;
-  margin-bottom: -2rem !important;
-  padding-left: 2rem;
-  text-decoration: underline;
-  color: #fff;
 }
 .list {
   font-family: 'Permanent Marker', sans-serif !important;
