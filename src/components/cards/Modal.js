@@ -1,6 +1,8 @@
 import "../../styles.less";
 
 const Modal = (props) => {
+	document.body.style.overflow = "hidden";
+
 	return (
 		<>
 			<div className="overlay" onClick={props.handleClose}></div>
