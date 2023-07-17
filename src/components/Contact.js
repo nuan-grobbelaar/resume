@@ -1,7 +1,7 @@
 import { useEffect, useState, useMemo } from "react";
 import Card from "./cards/Card";
 import CardStack from "./cards/CardStack";
-import Container from "./ui/Container";
+import DragContainer from "./ui/DragContainer";
 import useOnScreen from "../hooks/useOnScreen";
 import ContactCard from "./cards/ContactCard";
 
@@ -42,7 +42,7 @@ const Contact = (props) => {
 
 	return useMemo(() => {
 		return (
-			<Container
+			<DragContainer
 				index={props.index}
 				positions={positions}
 				name="contact"
@@ -50,7 +50,7 @@ const Contact = (props) => {
 			>
 				<CardStack id="stack" placeCard={placeCard} />
 				{cards.map((card) => card)}
-			</Container>
+			</DragContainer>
 		);
 	}, [positions, cards, placeCard]);
 };

@@ -54,6 +54,7 @@ const BrutalCard = (props) => {
 				</Modal>
 			) : (
 				<div
+					id={props.id}
 					className={"card " + props.className}
 					style={{ transform: "rotate(" + props.rotate + "deg)" }}
 					onClick={toggleInfo}

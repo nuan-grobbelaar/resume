@@ -1,0 +1,73 @@
+.container-item {
+  position: absolute;
+}
+
+/*
+ * HOME
+ */
+
+#home-visibility {
+  .container-item();
+  top: calc(100vh * 0.5);
+  left: calc(100vw * 0.5);
+}
+
+#me {
+  .container-item();
+  top: calc(100vh * 0.3);
+  left: calc(100vw * 0.7);
+}
+
+/*
+ * EXPERIENCE
+ */
+
+@experience-offset: 100vh;
+
+#aci {
+  .container-item();
+  top: calc(@experience-offset + 100vh * 0.24);
+  left: calc(100vw * 0.06);
+}
+
+#mezz {
+  .container-item();
+  top: calc(@experience-offset + 100vh * 0.51);
+  left: calc(100vw * 0.41); 
+}
+
+#tal {
+  .container-item();
+  top: calc(@experience-offset + 100vh * 0.33);
+  left: calc(100vw * 0.75); 
+}
+
+/*
+ * SKILLS
+ */
+
+@skills-offset: 200vh;
+
+#education {
+  .container-item();
+  top: calc(@skills-offset + 100vh * 0.2);
+  left: calc(100vw * 0.35);
+}
+
+#frameworks {
+  .container-item();
+  top: calc(@skills-offset + 100vh * 0.24);
+  left: calc(100vw * 0.06);  
+}
+
+#languages {
+  .container-item();
+  top: calc(@skills-offset + 100vh * 0.7);
+  left: calc(100vw * 0.3);  
+}
+
+#tools {
+  .container-item();
+  top: calc(@skills-offset + 100vh * 0.4);
+  left: calc(100vw * 0.7);  
+}

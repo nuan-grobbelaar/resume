@@ -5,27 +5,8 @@ import List from "./List";
 import useOnScreen from "../hooks/useOnScreen";
 
 export default function Skills(props) {
-	const positions = {
-		education: {
-			xPos: 0.35,
-			yPos: 0.2,
-		},
-		frameworks: {
-			xPos: 0.06,
-			yPos: 0.24,
-		},
-		languages: {
-			xPos: 0.3,
-			yPos: 0.6,
-		},
-		tools: {
-			xPos: 0.7,
-			yPos: 0.4,
-		},
-	};
-
 	return (
-		<Container index={props.index} positions={positions} name="skills">
+		<Container index={props.index} positions={{}} name="skills">
 			<Card
 				id="education"
 				color={"#E32BD1"}

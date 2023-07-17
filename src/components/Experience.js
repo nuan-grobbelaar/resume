@@ -8,7 +8,7 @@ import ExperienceArrow2 from "./icons/ExperienceArrow2";
 
 function ExperienceCard(props) {
 	return (
-		<div className="experience-card">
+		<div id={props.id} className="experience-card">
 			{props.children}
 			{props.accentText && (
 				<span
@@ -40,35 +40,8 @@ function ExperienceCard(props) {
 }
 
 export default function Experience(props) {
-	const positions = {
-		aci: {
-			xPos: 0.06,
-			yPos: 0.24,
-		},
-		mezzDates: {
-			xPos: 0.41,
-			yPos: 0.44,
-		},
-		mezzArrow: {
-			xPos: 0.62,
-			yPos: 0.47,
-		},
-		mezz: {
-			xPos: 0.41,
-			yPos: 0.51,
-		},
-		talDates: {
-			xPos: 0.75,
-			yPos: 0.77,
-		},
-		tal: {
-			xPos: 0.75,
-			yPos: 0.33,
-		},
-	};
-
 	return (
-		<Container index={props.index} positions={positions} name="experience">
+		<Container index={props.index} positions={{}} name="experience">
 			<ExperienceCard
 				id="aci"
 				accentText={{
