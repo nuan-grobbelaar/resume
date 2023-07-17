@@ -35,6 +35,11 @@
 /*
  * EXPERIENCE
  */
+#experience-visibility {
+  position: absolute;
+  top: calc(100vh + 100vh * 0.5);
+  left: calc(100vw * 0.5);
+}
 #aci {
   position: absolute;
   top: calc(100vh + 100vh * 0.24);
@@ -53,6 +58,11 @@
 /*
  * SKILLS
  */
+#skills-visibility {
+  position: absolute;
+  top: calc(200vh + 100vh * 0.5);
+  left: calc(100vw * 0.5);
+}
 #education {
   position: absolute;
   top: calc(200vh + 100vh * 0.2);
@@ -72,6 +82,14 @@
   position: absolute;
   top: calc(200vh + 100vh * 0.4);
   left: calc(100vw * 0.7);
+}
+/*
+ * CONTACT
+ */
+#contact-visibility {
+  position: absolute;
+  top: calc(300vh + 100vh * 0.5);
+  left: calc(100vw * 0.5);
 }
 #arrow-icon-path {
   stroke-dasharray: 1115.7;

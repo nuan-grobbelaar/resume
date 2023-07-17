@@ -24,6 +24,12 @@
 
 @experience-offset: 100vh;
 
+#experience-visibility {
+  .container-item();
+  top: calc(@experience-offset + 100vh * 0.5);
+  left: calc(100vw * 0.5);
+}
+
 #aci {
   .container-item();
   top: calc(@experience-offset + 100vh * 0.24);
@@ -48,6 +54,12 @@
 
 @skills-offset: 200vh;
 
+#skills-visibility {
+  .container-item();
+  top: calc(@skills-offset + 100vh * 0.5);
+  left: calc(100vw * 0.5);
+}
+
 #education {
   .container-item();
   top: calc(@skills-offset + 100vh * 0.2);
@@ -71,3 +83,15 @@
   top: calc(@skills-offset + 100vh * 0.4);
   left: calc(100vw * 0.7);  
 }
+
+/*
+ * CONTACT
+ */
+
+ @contact-offset: 300vh;
+
+ #contact-visibility {
+   .container-item();
+   top: calc(@contact-offset + 100vh * 0.5);
+   left: calc(100vw * 0.5);
+ }
