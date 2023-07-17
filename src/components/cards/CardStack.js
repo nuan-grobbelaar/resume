@@ -14,7 +14,7 @@ const to = (i) => ({
 	rot: 0,
 	delay: i * 100,
 });
-const from = (_i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
+const from = (_i) => ({ x: -50, rot: 0, scale: 1, y: -200 });
 const trans = (r, s) =>
 	`rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
