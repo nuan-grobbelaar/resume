@@ -22,7 +22,7 @@ export default function Container(props) {
 	}, [isVisible]);
 
 	return (
-		<div ref={ref} className="container">
+		<div ref={props.forwardRef ? props.forwardRef : ref} className="container">
 			<div id={`${props.name}-visibility`} ref={visibilityRef}></div>
 			{props.children}
 		</div>

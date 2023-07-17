@@ -48,7 +48,8 @@ const Contact = (props) => {
 				name="contact"
 				setContainerSize={setContainerSize}
 			>
-				<CardStack id="stack" placeCard={placeCard} />
+				<CardStack id="stack" placeCard={placeCard} /> //TODO: absolute
+				positioning here would be nice
 				{cards.map((card) => card)}
 			</DragContainer>
 		);
