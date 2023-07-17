@@ -3,7 +3,7 @@ import Modal from "./Modal";
 import Tag from "../ui/Tag";
 import { CARD_SIZE } from "./Card";
 
-import "../../styles.css";
+import "../../style/styles.css";
 
 export default function ContactCard(props) {
 	const [showModal, setShowModal] = useState(props.placed);

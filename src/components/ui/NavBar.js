@@ -1,4 +1,4 @@
-import "../../styles.css";
+import "../../style/styles.css";
 import Button from "./Button";
 
 import { useSelector, useDispatch } from "react-redux";
@@ -21,20 +21,22 @@ const NavBar = (props) => {
 
 	return (
 		<div className="navBar">
-			{Object.values(props.sections).map((section) => {
-				return (
-					<Button
-						color={section.navButton.color}
-						rotate={section.navButton.rotation}
-						onClick={setSelected.bind(null, section.navButton.name)}
-						selected={selected === section.navButton.name}
-						wasPressed={wasPressed === section.navButton.name}
-						unsetPressed={() => setWasPressed("")}
-					>
-						{section.navButton.name}
-					</Button>
-				);
-			})}
+			{Object.values(props.sections)
+				.filter((section) => section.navButton)
+				.map((section) => {
+					return (
+						<Button
+							color={section.navButton.color}
+							rotate={section.navButton.rotation}
+							onClick={setSelected.bind(null, section.navButton.name)}
+							selected={selected === section.navButton.name}
+							wasPressed={wasPressed === section.navButton.name}
+							unsetPressed={() => setWasPressed("")}
+						>
+							{section.navButton.name}
+						</Button>
+					);
+				})}
 		</div>
 	);
 };

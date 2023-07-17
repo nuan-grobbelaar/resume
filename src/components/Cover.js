@@ -1,5 +1,3 @@
-import "../style/style-main.css";
-
 import Container from "./ui/Container";
 
 export default function Cover(props) {

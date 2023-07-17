@@ -1,4 +1,4 @@
-import "../../styles.css";
+import "../../style/styles.css";
 
 import Arrow from "../icons/Arrow";
 

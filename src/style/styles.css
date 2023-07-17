@@ -273,7 +273,7 @@ li {
   margin-left: 5rem;
   width: 164px;
   height: 64px;
-  position: fixed;
+  position: absolute;
   top: 0;
 }
 .name-label .text {

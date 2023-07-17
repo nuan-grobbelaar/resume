@@ -1,4 +1,4 @@
-import "../../styles.css";
+import "../../style/styles.css";
 
 const Tag = (props) => {
 	return (

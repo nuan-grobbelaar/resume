@@ -4,7 +4,7 @@ import { useDrag } from "@use-gesture/react";
 
 import ContactCard from "./ContactCard";
 
-import "../../styles.css";
+import "../../style/styles.css";
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i) => ({

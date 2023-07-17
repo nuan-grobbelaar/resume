@@ -1,5 +1,3 @@
-import "../style/style-main.css";
-
 import { useRef } from "react";
 import Container from "./ui/Container";
 import Card from "./cards/Card";

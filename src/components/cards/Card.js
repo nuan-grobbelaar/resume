@@ -2,7 +2,7 @@ import { useState } from "react";
 import Modal from "./Modal";
 import Tag from "../ui/Tag";
 
-import "../../styles.css";
+import "../../style/styles.css";
 
 export const CARD_SIZE = { width: 250, height: 300 };
 

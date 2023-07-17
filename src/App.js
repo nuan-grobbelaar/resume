@@ -1,7 +1,7 @@
 import logo from "./logo.svg";
 import "./App.css";
 
-import { useRef, useEffect, useState, useMemo } from "react";
+import React, { useRef, useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
 import NavBar from "./components/ui/NavBar";
@@ -12,24 +12,16 @@ import Contact from "./components/Contact";
 import Cover from "./components/Cover";
 
 function App() {
-	const dispatch = useDispatch();
 	const page = useSelector((state) => state.nav.page);
-
-	const [showCover, setShowCover] = useState(true);
-
-	setTimeout(() => {
-		setShowCover(false);
-	}, 2000);
 
 	console.log("selectedPage", page);
 
-	const cover = useRef(null);
 	const home = useRef(null);
 	const experience = useRef(null);
 	const skills = useRef(null);
 	const about = useRef(null);
 
-	const sections = {
+	const [sections, setSections] = useState({
 		home: {
 			ref: home,
 			navButton: {
@@ -66,7 +58,7 @@ function App() {
 			},
 			section: <Contact index={3} />,
 		},
-	};
+	});
 
 	useEffect(() => {
 		if (page && page !== "") {
@@ -87,19 +79,9 @@ function App() {
 				})}
 			</>
 		);
-	}, []);
+	}, [sections]);
 
-	return (
-		<div className="App">
-			{showCover ? (
-				<section ref={cover}>
-					<Cover />
-				</section>
-			) : (
-				renderedSections
-			)}
-		</div>
-	);
+	return <div className="App">{renderedSections}</div>;
 }
 
 export default App;
