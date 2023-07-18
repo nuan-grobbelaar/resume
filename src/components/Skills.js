@@ -14,6 +14,7 @@ export default function Skills(props) {
 				heading={"Stellenbosch University"}
 				body={"Grad. Dec 2018"}
 				rotate={"2"}
+				animation={{ delay: 100, startingPos: { x: -2000, y: 0 } }}
 			/>
 			<List id="frameworks" title="Frameworks:">
 				{["React", "Vue.js", "Node.js", "Pyramid"]}

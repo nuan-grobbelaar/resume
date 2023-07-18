@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSprings, animated } from "@react-spring/web";
+
 import Modal from "./Modal";
 import Tag from "../ui/Tag";
 
@@ -8,6 +10,27 @@ export const CARD_SIZE = { width: 250, height: 300 };
 
 const BrutalCard = (props) => {
 	const [showModal, setShowModal] = useState(false);
+
+	const to = (i) => ({
+		x: 0,
+		y: 0,
+		scale: 1,
+		rot: 0,
+		delay: props.animation.delay,
+	});
+	const from = (_i) => ({
+		x: props.animation.startingPos.x,
+		rot: 0,
+		scale: 1,
+		y: props.animation.startingPos.y,
+	});
+
+	const [springProps] = useSprings(1, (i) => ({
+		...to(i),
+		from: from(i),
+	}));
+
+	console.log("springProps", springProps);
 
 	const toggleInfo = () => {
 		setShowModal(!showModal);
@@ -53,14 +76,20 @@ const BrutalCard = (props) => {
 					{cardContent}
 				</Modal>
 			) : (
-				<div
-					id={props.id}
-					className={"card " + props.className}
-					style={{ transform: "rotate(" + props.rotate + "deg)" }}
-					onClick={toggleInfo}
-				>
-					{cardContent}
-				</div>
+				<>
+					{springProps.map(({ x, y }, i) => (
+						<animated.div key={i} style={{ x, y }}>
+							<div
+								id={props.id}
+								className={"card " + props.className}
+								style={{ transform: "rotate(" + props.rotate + "deg)" }}
+								onClick={toggleInfo}
+							>
+								{cardContent}
+							</div>
+						</animated.div>
+					))}
+				</>
 			)}
 		</>
 	);
