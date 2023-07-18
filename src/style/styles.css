@@ -91,6 +91,11 @@
   top: calc(300vh + 100vh * 0.5);
   left: calc(100vw * 0.5);
 }
+#stack {
+  position: absolute;
+  top: calc(300vh + 100vh * 0.6);
+  left: calc(100vw * 0.05);
+}
 #arrow-icon-path {
   stroke-dasharray: 1115.7;
   stroke-dashoffset: 1115.7;
