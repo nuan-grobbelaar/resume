@@ -19,7 +19,7 @@ const BrutalButton = (props) => {
 	}, [props.wasPressed]);
 
 	return (
-		<div className="brutalButton">
+		<div id={props.id} className="brutalButton">
 			<Box
 				className={
 					"brutalButton__container" + (props.selected ? " selected" : "")

@@ -29,6 +29,7 @@ const NavBar = (props) => {
 				.map((section) => {
 					return (
 						<Button
+							id={`${section.navButton.name}-button`}
 							color={section.navButton.color}
 							rotate={section.navButton.rotation}
 							onClick={setSelected.bind(null, section.navButton.name)}

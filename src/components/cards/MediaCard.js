@@ -57,7 +57,6 @@ const MediaCard = (props) => {
 					</div>
 				) : (
 					<div className="card__loader">
-						{/* <span>Image Loading</span> */}
 						<Loading className="" />
 					</div>
 				)}
