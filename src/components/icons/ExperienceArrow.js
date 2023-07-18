@@ -2,7 +2,7 @@ import "../../style/styles.css";
 
 const ExperienceArrow = (props) => {
 	return (
-		<div className={props.className}>
+		<div id={props.id} className={props.className}>
 			<svg
 				// width="171"
 				// height="77"

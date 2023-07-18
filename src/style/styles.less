@@ -4,13 +4,35 @@
 @container-height: calc(100vh - 160px);
 @container-width: 100vw;
 
+@-moz-keyframes spin {
+  0% { -moz-transform: rotate(0deg); }
+  50% { -moz-transform: rotate(45deg); }
+  100% { -moz-transform: rotate(0deg); }
+}
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  50% { -webkit-transform: rotate(45deg); }
+  100% { -webkit-transform: rotate(0deg); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(45deg); }
+  100% { transform: rotate(0deg); }
+}
+
 #arrow-icon-path {
   stroke-dasharray: 1115.7;
   stroke-dashoffset: 1115.7;
-  animation: arrow 0.5s ease-in forwards;
+  animation: draw 0.5s ease-in forwards;
 }
 
-@keyframes arrow {
+#loading-icon-path {
+  stroke-dasharray: 950;
+  stroke-dashoffset: 950;
+  animation: draw 3s ease-in-out forwards;
+}
+
+@keyframes draw {
   to {
     stroke-dashoffset: 0;
   }
@@ -93,6 +115,32 @@ li {
   position: relative;
   z-index: 10 !important;
 
+  .card__loader {
+    height: 250px;
+    width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // -webkit-animation-name: spin;
+    // -webkit-animation-duration: 5s;
+    // -webkit-animation-iteration-count: infinite;
+    // -webkit-animation-timing-function: linear;
+    // -moz-animation-name: spin;
+    // -moz-animation-duration: 5s;
+    // -moz-animation-iteration-count: infinite;
+    // -moz-animation-timing-function: linear;
+    // -ms-animation-name: spin;
+    // -ms-animation-duration: 5s;
+    // -ms-animation-iteration-count: infinite;
+    // -ms-animation-timing-function: ease;
+
+    span {
+      font-family: @tertiary-font;
+      font-size: 24px;
+    }
+  }
+
   .card__content {
     background-color: #fff;
     box-shadow: none !important;
@@ -128,7 +176,7 @@ li {
 
     .card__content__card-body--media {
       height: 250px;
-      width: auto;
+      width: 250px;
     }
 
     &:after {
