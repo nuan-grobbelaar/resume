@@ -21,6 +21,9 @@ const NavBar = (props) => {
 
 	return (
 		<div className="navBar">
+			<div className="name-label">
+				<h1 className="text">NUAN</h1>
+			</div>
 			{Object.values(props.sections)
 				.filter((section) => section.navButton)
 				.map((section) => {

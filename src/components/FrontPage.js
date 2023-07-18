@@ -16,9 +16,6 @@ export default function FrontPage(props) {
 
 	return (
 		<Container index={props.index} positions={positions} name="home">
-			<div className="name-label">
-				<h1 className="text">NUAN</h1>
-			</div>
 			<MediaCard
 				id="me"
 				src={me}

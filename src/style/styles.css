@@ -355,28 +355,6 @@ li {
   font-family: 'Bebas Neue', sans-serif !important;
   font-size: 14px;
 }
-.name-label {
-  background-color: #000;
-  padding-right: 32px;
-  padding-top: 48px;
-  padding-bottom: 40px;
-  margin-top: -1rem;
-  margin-right: auto;
-  margin-left: 5rem;
-  width: 164px;
-  height: 64px;
-  position: absolute;
-  top: 0;
-}
-.name-label .text {
-  font-family: 'Bebas Neue', sans-serif !important;
-  font-size: 80px !important;
-  margin-bottom: -2rem !important;
-  padding-left: 2rem;
-  color: #fff;
-  margin: 0;
-  font-weight: 400;
-}
 .navBar {
   /* background-color: blueviolet; */
   width: 100%;
@@ -389,6 +367,26 @@ li {
   padding-top: 1rem;
   background-color: rgba(0, 0, 0, 0);
   z-index: 15;
+}
+.navBar .name-label {
+  background-color: #000;
+  padding-right: 32px;
+  padding-top: 30px;
+  padding-bottom: 40px;
+  margin-top: -1rem;
+  margin-right: auto;
+  margin-left: 5rem;
+  width: 164px;
+  height: 64px;
+}
+.navBar .name-label .text {
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: 80px !important;
+  margin-bottom: -2rem !important;
+  padding-left: 2rem;
+  color: #fff;
+  margin: 0;
+  font-weight: 400;
 }
 .list {
   font-family: 'Permanent Marker', sans-serif !important;
