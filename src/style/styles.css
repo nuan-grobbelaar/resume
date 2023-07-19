@@ -173,6 +173,10 @@ li {
 .mt-1 {
   margin-top: 8px;
 }
+.error-text {
+  color: #a00;
+  transform: rotate(1deg);
+}
 .container {
   background-color: inherit;
   height: calc(100vh - 160px);

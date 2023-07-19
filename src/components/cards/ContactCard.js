@@ -27,7 +27,7 @@ const FormField = (props) => {
 				>
 					<div className="flex-row-container">
 						<span>{props.label}</span>
-						<span className="ml-auto">{props.error}</span>
+						<span className="ml-auto error-text">{props.error}</span>
 					</div>
 					{props.children}
 				</div>
