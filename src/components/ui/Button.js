@@ -30,6 +30,7 @@ const BrutalButton = (props) => {
 						className={"brutalButton__container__button " + props.className}
 						style={{ backgroundColor: props.color }}
 						onClick={props.onClick}
+						disabled={props.disabled}
 					>
 						<Typography className={"brutalButton__container__button__text"}>
 							{props.children}

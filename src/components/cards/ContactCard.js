@@ -7,39 +7,110 @@ import "../../style/styles.css";
 import Button from "../ui/Button";
 import { validate } from "schema-utils";
 
+const FormField = (props) => {
+	console.log("click", "prop", props);
+	const click = (ref) => {
+		console.log("click", ref);
+		ref.current.focus();
+	};
+
+	return (
+		<div
+			className="contact-form__container"
+			onClick={() => click(props.children.ref)}
+		>
+			<div className="shadow">
+				<div
+					className={`contact-form__container__field ${
+						props.error ? "error" : ""
+					}`}
+				>
+					<div className="flex-row-container">
+						<span>{props.label}</span>
+						<span className="ml-auto">{props.error}</span>
+					</div>
+					{props.children}
+				</div>
+			</div>
+		</div>
+	);
+};
+
+const Input = (props) => {
+	const ref = useRef(null);
+	return (
+		<FormField label={props.label} error={props.error}>
+			<input
+				ref={ref}
+				type="text"
+				value={props.value}
+				onChange={(e) => props.onChange(e.target.value)}
+			/>
+		</FormField>
+	);
+};
+
+const TextArea = (props) => {
+	const ref = useRef(null);
+	return (
+		<FormField label={props.label} error={props.error}>
+			<textarea
+				ref={ref}
+				spellCheck="false"
+				rows="20"
+				type="text"
+				onChange={(e) => props.onChange(e.target.value)}
+			/>
+		</FormField>
+	);
+};
+
 export default function ContactCard(props) {
 	const [showModal, setShowModal] = useState(props.placed);
 	document.body.style.overflow = "auto";
 
 	console.log("rot", "card", props.rotate);
 
-	const nameRef = useRef();
-	const emailRef = useRef();
-	const subjectRef = useRef();
-	const messageRef = useRef();
+	const [nameValue, setNameValue] = useState("");
+	const [emailValue, setEmailValue] = useState("");
+	const [subjectValue, setSubjectValue] = useState("");
+	const [messageValue, setMessageValue] = useState("");
 
 	const [nameError, setNameError] = useState(null);
 	const [emailError, setEmailError] = useState(null);
 	const [subjectError, setSubjectError] = useState(null);
 	const [messageError, setMessageError] = useState(null);
 
+	const error = nameError || emailError || subjectError || messageError;
+
 	const formFields = [
-		{ ref: nameRef, setError: setNameError },
-		{ ref: emailRef, setError: setEmailError },
-		{ ref: subjectRef, setError: setSubjectError },
-		{ ref: messageRef, setError: setMessageError },
+		{ value: nameValue, setError: setNameError },
+		{ value: emailValue, setError: setEmailError },
+		{ value: subjectValue, setError: setSubjectError },
+		{ value: messageValue, setError: setMessageError },
 	];
 
 	const validate = () => {
 		console.log("validate");
+		let error = false;
 		formFields.forEach((field) => {
-			console.log(!!field.ref.current.value);
-			if (!field.ref.current.value) field.setError("required");
+			console.log(field.value);
+			if (!field.value || field.value === "") {
+				error = true;
+				field.setError("required");
+			} else {
+				field.setError(null);
+			}
 		});
+
+		if (!error) setShowModal(false);
 	};
 
-	const click = (ref) => {
-		ref.current.focus();
+	const setValue = (value, setValue, setError) => {
+		if (value && value !== "") {
+			setError(null);
+		}
+		setValue(value);
 	};
 
 	const modalContent = (props) => (
@@ -53,59 +124,47 @@ export default function ContactCard(props) {
 			className="card__content flex-col-container"
 			style={{ width: `${CARD_SIZE.width}px`, height: `${CARD_SIZE.height}px` }}
 		>
-			{messageRef.current?.value && (
+			{messageValue && (
 				<>
 					<div className="card__content__card-body contact-card-message">
-						<span>{messageRef.current?.value.substring(0, 360) + "..."}</span>
+						<span>{messageValue.substring(0, 360) + "..."}</span>
 					</div>
 					<div className="contact-card-name">
-						<span>{"- " + nameRef.current?.value}</span>
+						<span>{"- " + nameValue}</span>
 					</div>
 				</>
 			)}
 		</div>
 	);
 
-	const FormField = (props) => {
-		return (
-			<div
-				className="contact-form__container"
-				onClick={() => click(props.children.ref)}
-			>
-				<div className="shadow">
-					<div
-						className={`contact-form__container__field ${
-							props.error ? "error" : ""
-						}`}
-					>
-						<div className="flex-row-container">
-							<span>{props.label}</span>
-							<span className="ml-auto">{props.error}</span>
-						</div>
-						{props.children}
-					</div>
-				</div>
-			</div>
-		);
-	};
-
 	const form = (
 		<div className="contact-form">
-			<FormField label="Name" error={nameError}>
-				<input ref={nameRef} type="text" />
-			</FormField>
+			<Input
+				label="Name"
+				error={nameError}
+				value={nameValue}
+				onChange={(value) => setValue(value, setNameValue, setNameError)}
+			/>
 
-			<FormField label="Email" error={emailError}>
-				<input ref={emailRef} type="text" />
-			</FormField>
+			<Input
+				label="Email"
+				error={emailError}
+				value={emailValue}
+				onChange={(value) => setValue(value, setEmailValue, setEmailError)}
+			/>
 
-			<FormField label="Subject" error={subjectError}>
-				<input ref={subjectRef} type="text" />
-			</FormField>
+			<Input
+				label="Subject"
+				error={subjectError}
+				value={subjectValue}
+				onChange={(value) => setValue(value, setSubjectValue, setSubjectError)}
+			/>
 
-			<FormField label="Message" error={messageError}>
-				<textarea ref={messageRef} spellCheck="false" rows="20" type="text" />
-			</FormField>
+			<TextArea
+				label="Message"
+				error={messageError}
+				onChange={(value) => setValue(value, setMessageValue, setMessageError)}
+			/>
 
 			<div className="contact-form__action-bar">
 				<Button
@@ -115,6 +174,7 @@ export default function ContactCard(props) {
 					onClick={() => validate()}
 					selected={false}
 					wasPressed={false}
+					disabled={error}
 				>
 					Send
 				</Button>
