@@ -21,6 +21,7 @@ export default function FrontPage(props) {
 				src={me}
 				rotate={"2"}
 				title={"Table Mountain"}
+				animation={{ delay: 500, startingPos: { x: 2000, y: -250 } }}
 			></MediaCard>
 		</Container>
 	);

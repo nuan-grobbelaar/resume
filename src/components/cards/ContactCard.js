@@ -4,6 +4,7 @@ import Tag from "../ui/Tag";
 import { CARD_SIZE } from "./Card";
 
 import "../../style/styles.css";
+import Button from "../ui/Button";
 
 export default function ContactCard(props) {
 	const [showModal, setShowModal] = useState(props.placed);
@@ -47,11 +48,11 @@ export default function ContactCard(props) {
 	const FormField = (props) => {
 		return (
 			<div
-				className="contactForm__container"
+				className="contact-form__container"
 				onClick={() => click(props.children.ref)}
 			>
 				<div className="shadow">
-					<div className="contactForm__container__field">
+					<div className="contact-form__container__field">
 						<span>{props.label}</span>
 						{props.children}
 					</div>
@@ -61,7 +62,7 @@ export default function ContactCard(props) {
 	};
 
 	const form = (
-		<div className="contactForm">
+		<div className="contact-form">
 			<FormField label="Name">
 				<input ref={nameRef} type="text" />
 			</FormField>
@@ -77,6 +78,19 @@ export default function ContactCard(props) {
 			<FormField label="Message">
 				<textarea ref={messageRef} spellcheck="false" rows="20" type="text" />
 			</FormField>
+
+			<div className="contact-form__action-bar">
+				<Button
+					id="form-button"
+					color={"#00FF00"}
+					rotate={0}
+					onClick={() => null}
+					selected={false}
+					wasPressed={false}
+				>
+					Send
+				</Button>
+			</div>
 		</div>
 	);
 

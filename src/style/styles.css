@@ -335,8 +335,8 @@ li {
   font-family: 'Bebas Neue', sans-serif !important;
 }
 .brutalButton .brutalButton__container .brutalButton__container__button:hover::after {
-  top: 2px;
-  left: 2px;
+  top: 0px;
+  left: 0px;
   right: -3.5px;
   bottom: -3.5px;
 }
@@ -356,8 +356,8 @@ li {
   transform: translateY(2px);
 }
 .brutalButton .brutalButton__container.selected .brutalButton__container__button::after {
-  top: 2px;
-  left: 2px;
+  top: 0px;
+  left: 0px;
   right: -3.5px;
   bottom: -3.5px;
 }
@@ -499,23 +499,23 @@ li {
   user-select: none;
   /* Standard syntax */
 }
-.contactForm {
+.contact-form {
   display: flex;
   flex-direction: column;
   height: auto;
   margin-top: 1.5em;
   align-items: center;
 }
-.contactForm .contactForm__container {
+.contact-form .contact-form__container {
   margin-bottom: 0.75em;
   position: relative;
   z-index: 10 !important;
   width: fit-content;
 }
-.contactForm .contactForm__container .shadow {
+.contact-form .contact-form__container .shadow {
   width: fit-content;
 }
-.contactForm .contactForm__container .shadow .contactForm__container__field {
+.contact-form .contact-form__container .shadow .contact-form__container__field {
   display: flex;
   flex-direction: column;
   height: auto;
@@ -533,23 +533,23 @@ li {
   background-color: #fff;
   padding: 0.5em 0.5em 0.2em 0.5em;
 }
-.contactForm .contactForm__container .shadow .contactForm__container__field span {
+.contact-form .contact-form__container .shadow .contact-form__container__field span {
   padding-left: 0.1em;
   font-family: 'Bebas Neue', sans-serif !important;
 }
-.contactForm .contactForm__container .shadow .contactForm__container__field input {
+.contact-form .contact-form__container .shadow .contact-form__container__field input {
   height: 1.5em;
 }
-.contactForm .contactForm__container .shadow .contactForm__container__field textarea {
+.contact-form .contact-form__container .shadow .contact-form__container__field textarea {
   resize: none;
   max-height: 310px;
 }
-.contactForm .contactForm__container .shadow .contactForm__container__field input,
-.contactForm .contactForm__container .shadow .contactForm__container__field textarea {
+.contact-form .contact-form__container .shadow .contact-form__container__field input,
+.contact-form .contact-form__container .shadow .contact-form__container__field textarea {
   outline: none;
   border: none;
 }
-.contactForm .contactForm__container .shadow:after {
+.contact-form .contact-form__container .shadow:after {
   content: '' !important;
   position: absolute !important;
   background-color: #000 !important;
@@ -560,6 +560,32 @@ li {
   z-index: -1 !important;
   border-radius: 2px !important;
   bottom: -3px;
+}
+.contact-form .contact-form__action-bar {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  width: 100%;
+}
+.contact-form .contact-form__action-bar #form-button {
+  margin-left: auto;
+  margin-right: 4px;
+}
+.contact-form .contact-form__action-bar #form-button .brutalButton__container .brutalButton__container__button::after {
+  top: 3px;
+  left: 3px;
+  right: -4.5px;
+  bottom: -4.5px;
+}
+.contact-form .contact-form__action-bar #form-button .brutalButton__container:hover {
+  transform: translateX(1px);
+  transform: translateY(1px);
+}
+.contact-form .contact-form__action-bar #form-button .brutalButton__container:hover .brutalButton__container__button::after {
+  top: 1.5px !important;
+  left: 1.5px !important;
+  right: -3px !important;
+  bottom: -3px !important;
 }
 .contact-card-message {
   overflow-y: hidden;
