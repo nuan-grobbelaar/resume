@@ -1,16 +1,34 @@
 import "../../style/styles.css";
 import Button from "./Button";
+import { useSprings, animated } from "@react-spring/web";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { navActions } from "../../store/nav.js";
 
-import { Typography, Box, CardMedia } from "@mui/material";
+const to = (i) => ({
+	x: 0,
+	y: 0,
+	scale: 1,
+	rot: 0,
+	delay: i * 100,
+});
+const from = (_i) => ({
+	x: 500,
+	rot: 0,
+	scale: 1,
+	y: -200,
+});
 
 const NavBar = (props) => {
 	const dispatch = useDispatch();
 	const selected = useSelector((state) => state.nav.selected);
 	const [wasPressed, setWasPressed] = useState("");
+
+	const [springProps] = useSprings(4, (i) => ({
+		...to(i),
+		from: from(i),
+	}));
 
 	const setSelected = (section) => {
 		setWasPressed(section);
@@ -24,10 +42,10 @@ const NavBar = (props) => {
 			<div className="name-label">
 				<h1 className="text">NUAN</h1>
 			</div>
-			{Object.values(props.sections)
-				.filter((section) => section.navButton)
-				.map((section) => {
-					return (
+			{springProps.map(({ x, y }, i) => {
+				const section = Object.values(props.sections)[i];
+				return (
+					<animated.div key={i} style={{ x, y }}>
 						<Button
 							id={`${section.navButton.name}-button`}
 							color={section.navButton.color}
@@ -39,8 +57,9 @@ const NavBar = (props) => {
 						>
 							{section.navButton.name}
 						</Button>
-					);
-				})}
+					</animated.div>
+				);
+			})}
 		</div>
 	);
 };

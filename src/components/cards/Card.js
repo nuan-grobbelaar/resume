@@ -30,8 +30,6 @@ const BrutalCard = (props) => {
 		from: from(i),
 	}));
 
-	console.log("springProps", springProps);
-
 	const toggleInfo = () => {
 		setShowModal(!showModal);
 	};

@@ -65,7 +65,7 @@ export default function Experience(props) {
 					}
 					rotate={"0.75"}
 					tags={["Java", "SQL", "Python", "Jenkins"]}
-					animation={{ delay: 100, startingPos: { x: -2000, y: 0 } }}
+					animation={{ delay: 100, startingPos: { x: -2000, y: -300 } }}
 				>
 					<p className="mt-1">
 						My time at ACI gave me greater insight into the payments world, but
@@ -120,7 +120,7 @@ export default function Experience(props) {
 					}
 					rotate={"-1"}
 					tags={["Java", "Vue.js", "PostgreSQL", "HTML", "CSS", "Docker"]}
-					animation={{ delay: 250, startingPos: { x: -2000, y: 0 } }}
+					animation={{ delay: 250, startingPos: { x: -2000, y: -200 } }}
 				>
 					<p className="mt-1">
 						Mezzanine's mission statement is to create productive societies by
@@ -157,7 +157,7 @@ export default function Experience(props) {
 					}
 					rotate={"0.25"}
 					tags={["Java", "Vue.js", "PostgreSQL", "HTML", "CSS", "Docker"]}
-					animation={{ delay: 175, startingPos: { x: 2000, y: 0 } }}
+					animation={{ delay: 175, startingPos: { x: 2000, y: -250 } }}
 				>
 					<p className="mt-1">
 						Mezzanine's mission statement is to create productive societies by
