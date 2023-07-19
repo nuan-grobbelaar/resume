@@ -5,6 +5,7 @@ import { CARD_SIZE } from "./Card";
 
 import "../../style/styles.css";
 import Button from "../ui/Button";
+import { validate } from "schema-utils";
 
 export default function ContactCard(props) {
 	const [showModal, setShowModal] = useState(props.placed);
@@ -17,17 +18,37 @@ export default function ContactCard(props) {
 	const subjectRef = useRef();
 	const messageRef = useRef();
 
+	const [nameError, setNameError] = useState(null);
+	const [emailError, setEmailError] = useState(null);
+	const [subjectError, setSubjectError] = useState(null);
+	const [messageError, setMessageError] = useState(null);
+
+	const formFields = [
+		{ ref: nameRef, setError: setNameError },
+		{ ref: emailRef, setError: setEmailError },
+		{ ref: subjectRef, setError: setSubjectError },
+		{ ref: messageRef, setError: setMessageError },
+	];
+
+	const validate = () => {
+		console.log("validate");
+		formFields.forEach((field) => {
+			console.log(!!field.ref.current.value);
+			if (!field.ref.current.value) field.setError("required");
+		});
+	};
+
 	const click = (ref) => {
 		ref.current.focus();
 	};
 
-	const cardContent = (props) => (
+	const modalContent = (props) => (
 		<div className="card__content">
 			<div className="card__content__card-body">{props.children}</div>
 		</div>
 	);
 
-	const formValues = (
+	const cardContent = (
 		<div
 			className="card__content flex-col-container"
 			style={{ width: `${CARD_SIZE.width}px`, height: `${CARD_SIZE.height}px` }}
@@ -52,8 +73,15 @@ export default function ContactCard(props) {
 				onClick={() => click(props.children.ref)}
 			>
 				<div className="shadow">
-					<div className="contact-form__container__field">
-						<span>{props.label}</span>
+					<div
+						className={`contact-form__container__field ${
+							props.error ? "error" : ""
+						}`}
+					>
+						<div className="flex-row-container">
+							<span>{props.label}</span>
+							<span className="ml-auto">{props.error}</span>
+						</div>
 						{props.children}
 					</div>
 				</div>
@@ -63,20 +91,20 @@ export default function ContactCard(props) {
 
 	const form = (
 		<div className="contact-form">
-			<FormField label="Name">
+			<FormField label="Name" error={nameError}>
 				<input ref={nameRef} type="text" />
 			</FormField>
 
-			<FormField label="Email">
+			<FormField label="Email" error={emailError}>
 				<input ref={emailRef} type="text" />
 			</FormField>
 
-			<FormField label="Subject">
+			<FormField label="Subject" error={subjectError}>
 				<input ref={subjectRef} type="text" />
 			</FormField>
 
-			<FormField label="Message">
-				<textarea ref={messageRef} spellcheck="false" rows="20" type="text" />
+			<FormField label="Message" error={messageError}>
+				<textarea ref={messageRef} spellCheck="false" rows="20" type="text" />
 			</FormField>
 
 			<div className="contact-form__action-bar">
@@ -84,7 +112,7 @@ export default function ContactCard(props) {
 					className="form-button"
 					color={"#00FF00"}
 					rotate={0}
-					onClick={() => null}
+					onClick={() => validate()}
 					selected={false}
 					wasPressed={false}
 				>
@@ -101,7 +129,7 @@ export default function ContactCard(props) {
 					className="card--modal"
 					handleClose={setShowModal.bind(null, false)}
 				>
-					{cardContent({ ...props, children: form })}
+					{modalContent({ ...props, children: form })}
 				</Modal>
 			) : (
 				<div
@@ -110,7 +138,7 @@ export default function ContactCard(props) {
 					}
 					style={{ transform: "rotate(" + props.rotate + "deg)" }}
 				>
-					{formValues}
+					{cardContent}
 				</div>
 			)}
 		</>

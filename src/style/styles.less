@@ -9,6 +9,8 @@
 @button-shadow-right: -5.5px;
 @button-shadow-bottom: -5.5px;
 
+@error-background: #FF9494;
+
 .button-shadow-position-mixin {
   top: @button-shadow-top + 1;
   left: @button-shadow-left + 1;
@@ -92,6 +94,10 @@ li {
 
 .mt-auto {
   margin-top: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
 }
 
 .mt-1 {
@@ -510,6 +516,9 @@ li {
         background-color: #fff;
         padding: 0.5em 0.5em 0.2em 0.5em;
         
+        &.error {
+          background-color: @error-background;
+        }
 
         span {
           padding-left: 0.1em;
@@ -528,6 +537,7 @@ li {
         input, textarea {
           outline: none;
           border: none;
+          background-color: inherit;
         }
       }
   

@@ -167,6 +167,9 @@ li {
 .mt-auto {
   margin-top: auto;
 }
+.ml-auto {
+  margin-left: auto;
+}
 .mt-1 {
   margin-top: 8px;
 }
@@ -545,6 +548,9 @@ li {
   background-color: #fff;
   padding: 0.5em 0.5em 0.2em 0.5em;
 }
+.contact-form .contact-form__container .shadow .contact-form__container__field.error {
+  background-color: #FF9494;
+}
 .contact-form .contact-form__container .shadow .contact-form__container__field span {
   padding-left: 0.1em;
   font-family: 'Bebas Neue', sans-serif !important;
@@ -560,6 +566,7 @@ li {
 .contact-form .contact-form__container .shadow .contact-form__container__field textarea {
   outline: none;
   border: none;
+  background-color: inherit;
 }
 .contact-form .contact-form__container .shadow:after {
   content: '' !important;
