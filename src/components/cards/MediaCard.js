@@ -50,7 +50,7 @@ const MediaCard = (props) => {
 					className="card--modal"
 					handleClose={setShowModal.bind(null, false)}
 				>
-					<div className="card__content" data-active={true}>
+					<div className="card__content">
 						<div className="card__content__card-body--media"></div>
 					</div>
 				</Modal>
@@ -65,7 +65,7 @@ const MediaCard = (props) => {
 						onClick={toggleInfo}
 						data-active={true}
 					>
-						<div className="card__content">
+						<div className="card__content" data-active={true}>
 							<div className="card__content__card-body--media">
 								<img
 									src={props.src}
