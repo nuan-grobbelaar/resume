@@ -9,6 +9,11 @@
 @button-shadow-right: -5.5px;
 @button-shadow-bottom: -5.5px;
 
+@card-shadow-top: 5px;
+@card-shadow-left: 5px;
+@card-shadow-right: -5.5px;
+@card-shadow-bottom: -5.5px;
+
 @error-background: #FF9494;
 
 .button-shadow-position-mixin {
@@ -23,6 +28,13 @@
   left: @button-shadow-left;
   right: @button-shadow-right;
   bottom: @button-shadow-bottom;
+}
+
+.card-shadow-position-mixin {
+  top: @card-shadow-top;
+  left: @card-shadow-left;
+  right: @card-shadow-right;
+  bottom: @card-shadow-bottom;
 }
 
 #arrow-icon-path {
@@ -190,16 +202,25 @@ li {
     }
 
     &:after {
+      .card-shadow-position-mixin();
       content:'' !important;
       position: absolute !important;
       background-color:#000 !important;
-      top: 5px !important;
-      left: 5px !important;
-      right: -5.5px !important;
-      bottom: -5.5px !important;
       z-index: -1 !important;
       border-radius: 2px !important;
     }
+
+    &:hover::after {
+      top: @card-shadow-top + 2.5;
+      left: @card-shadow-left + 2.5;
+      right: @card-shadow-right - 2.5;
+      bottom: @card-shadow-bottom - 2.5;
+    }
+  }
+
+  &:hover {
+    transform: translateX(-2.5px) !important;
+    transform: translateY(-2.5px) !important;
   }
 }
 

@@ -108,6 +108,12 @@
   right: -5.5px;
   bottom: -5.5px;
 }
+.card-shadow-position-mixin {
+  top: 5px;
+  left: 5px;
+  right: -5.5px;
+  bottom: -5.5px;
+}
 #arrow-icon-path {
   stroke-dasharray: 1115.7;
   stroke-dashoffset: 1115.7;
@@ -249,15 +255,25 @@ li {
   width: 250px;
 }
 .card .card__content:after {
+  top: 5px;
+  left: 5px;
+  right: -5.5px;
+  bottom: -5.5px;
   content: '' !important;
   position: absolute !important;
   background-color: #000 !important;
-  top: 5px !important;
-  left: 5px !important;
-  right: -5.5px !important;
-  bottom: -5.5px !important;
   z-index: -1 !important;
   border-radius: 2px !important;
+}
+.card .card__content:hover::after {
+  top: 7.5px;
+  left: 7.5px;
+  right: -8px;
+  bottom: -8px;
+}
+.card:hover {
+  transform: translateX(-2.5px) !important;
+  transform: translateY(-2.5px) !important;
 }
 .card--modal {
   position: fixed;
