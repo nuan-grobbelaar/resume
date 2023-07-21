@@ -45,7 +45,14 @@ const BrutalCard = (props) => {
 	const cardContent = (
 		<div
 			className={"card__content" + (showModal ? "" : " flex-col-container")}
-			style={{ width: `${CARD_SIZE.width}px`, height: `${CARD_SIZE.height}px` }}
+			style={
+				!showModal
+					? {
+							width: `${CARD_SIZE.width}px`,
+							height: `${CARD_SIZE.height}px`,
+					  }
+					: {}
+			}
 		>
 			<div
 				className="card__content__title-bar"
