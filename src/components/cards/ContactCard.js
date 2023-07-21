@@ -169,7 +169,7 @@ export default function ContactCard(props) {
 			<div className="contact-form__action-bar">
 				<Button
 					className="form-button"
-					color={"#00FF00"}
+					color={"#99E32B"}
 					rotate={0}
 					onClick={() => validate()}
 					selected={false}

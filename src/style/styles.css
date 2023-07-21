@@ -265,13 +265,13 @@ li {
   z-index: -1 !important;
   border-radius: 2px !important;
 }
-.card .card__content:hover::after {
-  top: 7.5px;
-  left: 7.5px;
-  right: -8px;
-  bottom: -8px;
+.card .card__content[data-active="true"]:hover::after {
+  top: 7px;
+  left: 7px;
+  right: -7.5px;
+  bottom: -7.5px;
 }
-.card:hover {
+.card[data-active="true"]:hover {
   transform: translateX(-2.5px) !important;
   transform: translateY(-2.5px) !important;
 }
@@ -396,7 +396,7 @@ li {
   right: -3.5px;
   bottom: -3.5px;
 }
-.brutalButton .brutalButton__container:hover {
+.brutalButton .brutalButton__container:hover:enabled {
   transform: translateX(2px);
   transform: translateY(2px);
 }

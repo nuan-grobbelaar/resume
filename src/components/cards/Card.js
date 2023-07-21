@@ -53,6 +53,7 @@ const BrutalCard = (props) => {
 					  }
 					: {}
 			}
+			data-active={true}
 		>
 			<div
 				className="card__content__title-bar"
@@ -89,6 +90,7 @@ const BrutalCard = (props) => {
 								className={"card " + props.className}
 								style={{ transform: "rotate(" + props.rotate + "deg)" }}
 								onClick={toggleInfo}
+								data-active={true}
 							>
 								{cardContent}
 							</div>

@@ -28,7 +28,11 @@ const BrutalButton = (props) => {
 				<Box style={{ transform: "rotate(" + props.rotate + "deg)" }}>
 					<Button
 						className={"brutalButton__container__button " + props.className}
-						style={{ backgroundColor: props.color }}
+						style={
+							!props.disabled
+								? { backgroundColor: props.color }
+								: { backgroundColor: "#bbb" }
+						}
 						onClick={props.onClick}
 						disabled={props.disabled}
 					>

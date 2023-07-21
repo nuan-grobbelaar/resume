@@ -210,15 +210,15 @@ li {
       border-radius: 2px !important;
     }
 
-    &:hover::after {
-      top: @card-shadow-top + 2.5;
-      left: @card-shadow-left + 2.5;
-      right: @card-shadow-right - 2.5;
-      bottom: @card-shadow-bottom - 2.5;
+    &[data-active="true"]:hover::after {
+      top: @card-shadow-top + 2;
+      left: @card-shadow-left + 2;
+      right: @card-shadow-right - 2;
+      bottom: @card-shadow-bottom - 2;
     }
   }
 
-  &:hover {
+  &[data-active="true"]:hover {
     transform: translateX(-2.5px) !important;
     transform: translateY(-2.5px) !important;
   }
@@ -362,7 +362,7 @@ li {
       }
     }
 
-    &:hover {
+    &:hover:enabled {
       transform: translateX(2px);
       transform: translateY(2px);
     }
