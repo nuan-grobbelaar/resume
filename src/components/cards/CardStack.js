@@ -6,13 +6,12 @@ import ContactCard from "./ContactCard";
 
 import "../../style/styles.css";
 
-// These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = (i) => ({
 	x: i * -4,
 	y: i * -4,
 	scale: 1,
 	rot: 0,
-	delay: i * 100,
+	delay: i * 50,
 });
 const from = (_i) => ({ x: -800, rot: 0, scale: 1, y: -800 });
 const trans = (r, s) =>
@@ -28,7 +27,6 @@ export default function CardStack({ cardCount, placeCard }) {
 	const bind = useDrag(({ args: [index], down, movement: [mx, my] }) => {
 		if (!down) {
 			placeCard(mx, my, mx / 100);
-			// setCardCount(cardCount - 1);
 		}
 		api.start((i) => {
 			if (index !== i) return;

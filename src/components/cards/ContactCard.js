@@ -1,11 +1,13 @@
 import { useState, useRef } from "react";
+import { useDispatch } from "react-redux";
+
 import Modal from "./Modal";
 import Tag from "../ui/Tag";
 import { CARD_SIZE } from "./Card";
 
 import "../../style/styles.css";
 import Button from "../ui/Button";
-import { validate } from "schema-utils";
+import { contactActions } from "../../store/contact-slice.js";
 
 const FormField = (props) => {
 	console.log("click", "prop", props);
@@ -66,10 +68,10 @@ const TextArea = (props) => {
 };
 
 export default function ContactCard(props) {
+	const dispatch = useDispatch();
+
 	const [showModal, setShowModal] = useState(props.placed);
 	document.body.style.overflow = "auto";
-
-	console.log("rot", "card", props.rotate);
 
 	const [nameValue, setNameValue] = useState("");
 	const [emailValue, setEmailValue] = useState("");
@@ -90,6 +92,16 @@ export default function ContactCard(props) {
 		{ value: messageValue, setError: setMessageError },
 	];
 
+	const onClose = () => {
+		dispatch(contactActions.removeCard({ id: props.id }));
+		setShowModal(false);
+	};
+
+	const submit = (formData) => {
+		dispatch(contactActions.submit({ id: props.id, formData }));
+		setShowModal(false);
+	};
+
 	const validate = () => {
 		console.log("validate");
 		let error = false;
@@ -103,7 +115,13 @@ export default function ContactCard(props) {
 			}
 		});
 
-		if (!error) setShowModal(false);
+		if (!error)
+			submit({
+				name: nameValue,
+				email: emailValue,
+				subject: subjectValue,
+				message: messageValue,
+			});
 	};
 
 	const setValue = (value, setValue, setError) => {
@@ -185,10 +203,7 @@ export default function ContactCard(props) {
 	return (
 		<>
 			{showModal ? (
-				<Modal
-					className="card--modal"
-					handleClose={setShowModal.bind(null, false)}
-				>
+				<Modal className="card--modal" handleClose={onClose}>
 					{modalContent({ ...props, children: form })}
 				</Modal>
 			) : (

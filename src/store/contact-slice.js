@@ -15,6 +15,22 @@ const contactSlice = createSlice({
 			console.log("contactSlice", state.placedCards);
 			state.cardCount = state.cardCount - 1;
 		},
+		submit(state, action) {
+			console.log("contactSlice", action.payload.id);
+			const activeCard = state.placedCards.find(
+				(card) => card.id == action.payload.id
+			);
+
+			activeCard.formData = action.payload.formData;
+		},
+		removeCard(state, action) {
+			console.log("fuck", action.payload.id);
+			state.placedCards = state.placedCards.filter((card) => {
+				console.log("fuck", card.id, card.id !== action.payload.id);
+				return card.id != action.payload.id;
+			});
+			state.cardCount = state.cardCount + 1;
+		},
 	},
 });
 
