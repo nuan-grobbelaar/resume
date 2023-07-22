@@ -18,8 +18,7 @@ const from = (_i) => ({ x: -800, rot: 0, scale: 1, y: -800 });
 const trans = (r, s) =>
 	`rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
-export default function CardStack({ placeCard }) {
-	const [cardCount, setCardCount] = useState(5);
+export default function CardStack({ cardCount, placeCard }) {
 	const [isDown, setIsDown] = useState(null);
 	const [props, api] = useSprings(cardCount, (i) => ({
 		...to(i),
@@ -29,7 +28,7 @@ export default function CardStack({ placeCard }) {
 	const bind = useDrag(({ args: [index], down, movement: [mx, my] }) => {
 		if (!down) {
 			placeCard(mx, my, mx / 100);
-			setCardCount(cardCount - 1);
+			// setCardCount(cardCount - 1);
 		}
 		api.start((i) => {
 			if (index !== i) return;

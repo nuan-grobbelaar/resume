@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useMemo } from "react";
 import Container from "./Container";
 
 function ContainerItem(props) {
+	console.log("ContainerItem", "props", props);
 	const position = props.position ? props.position : { xPos: 0, yPos: 0 };
 
 	return (
@@ -43,7 +44,7 @@ export default function DragContainer(props) {
 					return (
 						<ContainerItem
 							id={child.props.id}
-							position={props.positions[child.props.id]}
+							position={props.positions[child.props.id]?.position}
 							containerIndex={props.index}
 							maxHeight={maxHeight}
 							maxWidth={maxWidth}

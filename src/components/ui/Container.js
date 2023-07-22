@@ -2,7 +2,7 @@ import "../../style/styles.css";
 
 import React, { useState, useEffect, useRef, useMemo } from "react";
 import { useDispatch } from "react-redux";
-import { navActions } from "../../store/nav.js";
+import { navActions } from "../../store/nav-slice.js";
 import useOnScreen from "../../hooks/useOnScreen";
 
 export default function Container(props) {

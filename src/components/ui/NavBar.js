@@ -4,7 +4,7 @@ import { useSprings, animated } from "@react-spring/web";
 
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import { navActions } from "../../store/nav.js";
+import { navActions } from "../../store/nav-slice.js";
 
 const to = (i) => ({
 	x: 0,

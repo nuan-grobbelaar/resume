@@ -1,42 +1,51 @@
 import { useEffect, useState, useMemo } from "react";
+import { useSelector, useDispatch } from "react-redux";
+
 import Card from "./cards/Card";
 import CardStack from "./cards/CardStack";
 import DragContainer from "./ui/DragContainer";
 import useOnScreen from "../hooks/useOnScreen";
 import ContactCard from "./cards/ContactCard";
+import { contactActions } from "../store/contact-slice.js";
 
 const Contact = (props) => {
+	const dispatch = useDispatch();
+	const cardCount = useSelector((state) => state.contact.cardCount);
+	const cardsX = useSelector((state) => state.contact.placedCards).reduce(
+		(acc, obj) => {
+			acc[obj.id] = { position: obj.position };
+			return acc;
+		},
+		{}
+	);
+	console.log("Contact", cardsX);
+
 	const [containerSize, setContainerSize] = useState(null);
 	const [realStackPos, setRealStackPos] = useState(null);
 	const [cards, setCards] = useState([]);
-	const [positions, setPositions] = useState({
-		stack: {
-			xPos: 0.05,
-			yPos: 0.6,
-		},
-	});
 
 	useEffect(() => {
 		setRealStackPos({
-			xPos: containerSize ? positions.stack.xPos * containerSize.maxWidth : 0,
+			xPos: containerSize
+				? cardsX.stack.position.xPos * containerSize.maxWidth
+				: 0,
 			yPos: containerSize
 				? containerSize.maxHeight * props.index +
-				  positions.stack.yPos * containerSize.maxHeight
+				  cardsX.stack.position.yPos * containerSize.maxHeight
 				: 0,
 		});
-	}, [containerSize, positions]);
+	}, [containerSize, cardsX.stack.position]);
 
 	console.log("real", realStackPos);
 
 	const placeCard = (x, y, r) => {
 		const id = cards.length;
 		console.log("size", `${containerSize}`);
-		positions[id] = {
+		const position = {
 			xPos: (realStackPos.xPos + x) / containerSize.maxWidth,
 			yPos: (realStackPos.yPos + y) / containerSize.maxHeight - props.index,
 		};
-		console.log("pos", positions);
-		setPositions(positions);
+		dispatch(contactActions.placeCard({ id, position }));
 		setCards([...cards, <ContactCard id={`${id}`} rotate={r} placed />]);
 	};
 
@@ -44,16 +53,15 @@ const Contact = (props) => {
 		return (
 			<DragContainer
 				index={props.index}
-				positions={positions}
+				positions={cardsX}
 				name="contact"
 				setContainerSize={setContainerSize}
 			>
-				<CardStack id="stack" placeCard={placeCard} /> //TODO: absolute
-				positioning here would be nice
+				<CardStack id="stack" placeCard={placeCard} cardCount={cardCount} />
 				{cards.map((card) => card)}
 			</DragContainer>
 		);
-	}, [positions, cards, placeCard]);
+	}, [cardsX, cards, placeCard]);
 };
 
 export default Contact;
