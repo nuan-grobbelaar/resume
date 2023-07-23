@@ -9,10 +9,12 @@ import "../../style/styles.css";
 import Button from "../ui/Button";
 import { contactActions } from "../../store/contact-slice.js";
 
+function validateEmail(emailAddress) {
+	return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(emailAddress);
+}
+
 const FormField = (props) => {
-	console.log("click", "prop", props);
 	const click = (ref) => {
-		console.log("click", ref);
 		ref.current.focus();
 	};
 
@@ -86,10 +88,10 @@ export default function ContactCard(props) {
 	const error = nameError || emailError || subjectError || messageError;
 
 	const formFields = [
-		{ value: nameValue, setError: setNameError },
-		{ value: emailValue, setError: setEmailError },
-		{ value: subjectValue, setError: setSubjectError },
-		{ value: messageValue, setError: setMessageError },
+		{ name: "name", value: nameValue, setError: setNameError },
+		{ name: "email", value: emailValue, setError: setEmailError },
+		{ name: "subject", value: subjectValue, setError: setSubjectError },
+		{ name: "message", value: messageValue, setError: setMessageError },
 	];
 
 	const onClose = () => {
@@ -103,13 +105,14 @@ export default function ContactCard(props) {
 	};
 
 	const validate = () => {
-		console.log("validate");
 		let error = false;
 		formFields.forEach((field) => {
-			console.log(field.value);
 			if (!field.value || field.value === "") {
 				error = true;
 				field.setError("required");
+			} else if (field.name == "email" && !validateEmail(field.value)) {
+				error = true;
+				field.setError("invalid");
 			} else {
 				field.setError(null);
 			}
@@ -145,7 +148,9 @@ export default function ContactCard(props) {
 			{messageValue && (
 				<>
 					<div className="card__content__card-body contact-card-message">
-						<span>{messageValue.substring(0, 360) + "..."}</span>
+						<span>{`${messageValue.substring(0, 360)}${
+							messageValue.length > 360 ? "..." : ""
+						}`}</span>
 					</div>
 					<div className="contact-card-name">
 						<span>{"- " + nameValue}</span>
@@ -192,7 +197,7 @@ export default function ContactCard(props) {
 					onClick={() => validate()}
 					selected={false}
 					wasPressed={false}
-					disabled={error}
+					disabled={!!error}
 				>
 					Send
 				</Button>

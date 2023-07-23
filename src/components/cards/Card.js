@@ -8,7 +8,7 @@ import "../../style/styles.css";
 
 export const CARD_SIZE = { width: 250, height: 300 };
 
-const BrutalCard = (props) => {
+export default function Card(props) {
 	const [showModal, setShowModal] = useState(false);
 
 	const to = (i) => ({
@@ -37,10 +37,12 @@ const BrutalCard = (props) => {
 	document.body.style.overflow = showModal ? "hidden" : "auto";
 
 	const tags = props.tags?.map((tag) => {
-		return <Tag color={"#F79900"}>{tag}</Tag>;
+		return (
+			<Tag key={tag} color={"#F79900"}>
+				{tag}
+			</Tag>
+		);
 	});
-
-	console.log(tags);
 
 	const cardContent = (
 		<div
@@ -100,6 +102,4 @@ const BrutalCard = (props) => {
 			)}
 		</>
 	);
-};
-
-export default BrutalCard;
+}

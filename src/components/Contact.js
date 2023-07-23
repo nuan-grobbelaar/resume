@@ -34,11 +34,8 @@ const Contact = (props) => {
 		});
 	}, [containerSize, cards.stack.position]);
 
-	console.log("real", realStackPos);
-
 	const placeCard = (x, y, r) => {
 		const id = Object.keys(cards).length;
-		console.log("size", `${containerSize}`);
 		const position = {
 			xPos: (realStackPos.xPos + x) / containerSize.maxWidth,
 			yPos: (realStackPos.yPos + y) / containerSize.maxHeight - props.index,
@@ -60,6 +57,7 @@ const Contact = (props) => {
 					.filter((card) => card[0] != "stack")
 					.map((card) => (
 						<ContactCard
+							key={card[0]}
 							id={card[0]}
 							rotate={card[1].position.rotation}
 							formData={card[1].formData}

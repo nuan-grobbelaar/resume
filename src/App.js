@@ -14,8 +14,6 @@ import Cover from "./components/Cover";
 function App() {
 	const page = useSelector((state) => state.nav.page);
 
-	console.log("selectedPage", page);
-
 	const home = useRef(null);
 	const experience = useRef(null);
 	const skills = useRef(null);
@@ -70,12 +68,15 @@ function App() {
 	}, [page]);
 
 	const renderedSections = useMemo(() => {
-		console.log("rendered", sections);
 		return (
 			<>
 				<NavBar sections={sections} />
-				{Object.values(sections).map((section) => {
-					return <section ref={section.ref}>{section.section}</section>;
+				{Object.values(sections).map((section, i) => {
+					return (
+						<section key={i} ref={section.ref}>
+							{section.section}
+						</section>
+					);
 				})}
 			</>
 		);

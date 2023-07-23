@@ -12,7 +12,6 @@ export default function useOnScreen(ref) {
 	);
 
 	useEffect(() => {
-		console.log("useOnScreen", ref.current);
 		observer.observe(ref.current);
 		return () => observer.disconnect();
 	}, []);

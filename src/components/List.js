@@ -6,7 +6,7 @@ const List = (props) => {
 			<h3>{props.title}</h3>
 			<ul>
 				{props.children.map((item) => (
-					<li>{item}</li>
+					<li key={item}>{item}</li>
 				))}
 			</ul>
 		</div>

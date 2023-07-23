@@ -4,7 +4,6 @@ import React, { useEffect, useRef, useMemo } from "react";
 import Container from "./Container";
 
 function ContainerItem(props) {
-	console.log("ContainerItem", "props", props);
 	const position = props.position ? props.position : { xPos: 0, yPos: 0 };
 
 	return (
@@ -39,7 +38,6 @@ export default function DragContainer(props) {
 
 		containerItems.push(
 			React.Children.map(props.children, (child) => {
-				console.log(props.name);
 				if (React.isValidElement(child)) {
 					return (
 						<ContainerItem
