@@ -32,6 +32,11 @@
   top: calc(100vh * 0.3);
   left: calc(100vw * 0.7);
 }
+#uganda {
+  position: absolute;
+  top: calc(100vh * 0.5);
+  left: calc(100vw * 0.2);
+}
 /*
  * EXPERIENCE
  */
@@ -241,6 +246,9 @@ li {
   font-family: 'Bebas Neue', sans-serif !important;
   font-size: 1.5em;
 }
+.card .card__content .card__content__title-bar--media-card {
+  border: none;
+}
 .card .card__content .card__content__card-body {
   padding: 10px;
   padding-top: 15px;
@@ -252,7 +260,7 @@ li {
 }
 .card .card__content .card__content__card-body--media {
   height: 250px;
-  width: 250px;
+  width: auto;
 }
 .card .card__content:after {
   top: 5px;

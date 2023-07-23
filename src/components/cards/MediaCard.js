@@ -75,7 +75,9 @@ const MediaCard = (props) => {
 									draggable="false"
 								/>
 							</div>
-							<div className="card__content__title-bar">{props.title}</div>
+							<div className="card__content__title-bar card__content__title-bar--media-card">
+								{props.title}
+							</div>
 						</div>
 					</animated.div>
 				))

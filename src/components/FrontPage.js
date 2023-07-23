@@ -5,6 +5,7 @@ import MediaCard from "./cards/MediaCard";
 import useOnScreen from "../hooks/useOnScreen";
 
 import me from "../resources/me.jpg";
+import uganda from "../resources/uganda.jpg";
 
 export default function FrontPage(props) {
 	const positions = {
@@ -22,6 +23,14 @@ export default function FrontPage(props) {
 				rotate={"2"}
 				title={"Table Mountain"}
 				animation={{ delay: 500, startingPos: { x: 2000, y: -250 } }}
+			></MediaCard>
+
+			<MediaCard
+				id="uganda"
+				src={uganda}
+				rotate={"-1"}
+				title={"Uganda"}
+				animation={{ delay: 300, startingPos: { x: -2000, y: +250 } }}
 			></MediaCard>
 		</Container>
 	);
