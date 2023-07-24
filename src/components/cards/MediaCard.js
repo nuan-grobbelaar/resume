@@ -4,10 +4,12 @@ import { useSprings, animated } from "@react-spring/web";
 
 import "../../style/styles.css";
 import Loading from "../icons/Loading";
+import AnimatedContainer from "../ui/AnimatedContainer";
 
 const MediaCard = (props) => {
 	const [showModal, setShowModal] = useState(false);
 	const [showCard, setShowCard] = useState(false);
+	const [shouldAnimate, setShouldAnimate] = useState(true);
 
 	const to = (i) => ({
 		x: 0,
@@ -37,33 +39,32 @@ const MediaCard = (props) => {
 	useEffect(() => {
 		const img = new Image();
 		img.onload = () => {
-			// when it finishes loading, update the component state
 			setShowCard(true);
 		};
 		img.src = props.src;
 	}, []);
 
+	const closeModal = () => {
+		setShouldAnimate(false);
+		setShowModal(false);
+	};
+
 	return (
 		<>
 			{showModal ? (
-				<Modal
-					className="card--modal"
-					handleClose={setShowModal.bind(null, false)}
-				>
+				<Modal className="card--modal" handleClose={closeModal}>
 					<div className="card__content">
 						<div className="card__content__card-body--media"></div>
 					</div>
 				</Modal>
 			) : showCard ? (
-				springProps.map(({ x, y }, i) => (
-					<animated.div
-						id={props.id}
-						key={i}
-						className={"card " + props.className}
-						style={{ transform: "rotate(" + props.rotate + "deg)", x, y }}
-						onClick={toggleInfo}
-						data-active={true}
-					>
+				<AnimatedContainer
+					id={props.id}
+					animation={props.animation}
+					className={props.className}
+					shouldAnimate={shouldAnimate}
+				>
+					<div className="card" onClick={toggleInfo} data-active={true}>
 						<div className="card__content" data-active={true}>
 							<div className="card__content__card-body--media">
 								<img
@@ -78,8 +79,8 @@ const MediaCard = (props) => {
 								{props.title}
 							</div>
 						</div>
-					</animated.div>
-				))
+					</div>
+				</AnimatedContainer>
 			) : (
 				<div id={props.id} className={"card " + props.className}>
 					<div className="card__loader">

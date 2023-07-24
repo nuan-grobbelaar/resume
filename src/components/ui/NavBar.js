@@ -5,6 +5,7 @@ import { useSprings, animated } from "@react-spring/web";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import { navActions } from "../../store/nav-slice.js";
+import AnimatedContainer from "./AnimatedContainer";
 
 const to = (i) => ({
 	x: 0,
@@ -39,9 +40,13 @@ const NavBar = (props) => {
 
 	return (
 		<div className="navBar">
-			<div className="name-label">
+			<AnimatedContainer
+				className="name-label"
+				shouldAnimate={true}
+				animation={{ delay: 800, startingPos: { x: 0, y: -200 } }}
+			>
 				<h1 className="text">NUAN</h1>
-			</div>
+			</AnimatedContainer>
 			{springProps.map(({ x, y }, i) => {
 				const section = Object.values(props.sections)[i];
 				return (

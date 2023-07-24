@@ -699,3 +699,6 @@ li {
   font-family: 'Permanent Marker', sans-serif !important;
   font-size: 2.4em;
 }
+.animated-container {
+  z-index: 100 !important;
+}

@@ -1,34 +1,16 @@
 import { useState } from "react";
-import { useSprings, animated } from "@react-spring/web";
 
 import Modal from "./Modal";
 import Tag from "../ui/Tag";
 
 import "../../style/styles.css";
+import AnimatedContainer from "../ui/AnimatedContainer";
 
 export const CARD_SIZE = { width: 250, height: 300 };
 
 export default function Card(props) {
 	const [showModal, setShowModal] = useState(false);
-
-	const to = (i) => ({
-		x: 0,
-		y: 0,
-		scale: 1,
-		rot: 0,
-		delay: props.animation.delay,
-	});
-	const from = (_i) => ({
-		x: props.animation.startingPos.x,
-		rot: 0,
-		scale: 1,
-		y: props.animation.startingPos.y,
-	});
-
-	const [springProps] = useSprings(1, (i) => ({
-		...to(i),
-		from: from(i),
-	}));
+	const [shouldAnimate, setShouldAnimate] = useState(true);
 
 	const toggleInfo = () => {
 		setShowModal(!showModal);
@@ -43,6 +25,11 @@ export default function Card(props) {
 			</Tag>
 		);
 	});
+
+	const closeModal = () => {
+		setShouldAnimate(false);
+		setShowModal(false);
+	};
 
 	const cardContent = (
 		<div
@@ -77,27 +64,25 @@ export default function Card(props) {
 	return (
 		<>
 			{showModal ? (
-				<Modal
-					className={"card--modal"}
-					handleClose={setShowModal.bind(null, false)}
-				>
+				<Modal className={"card--modal"} handleClose={closeModal}>
 					{cardContent}
 				</Modal>
 			) : (
 				<>
-					{springProps.map(({ x, y }, i) => (
-						<animated.div key={i} style={{ x, y }}>
-							<div
-								id={props.id}
-								className={"card " + props.className}
-								style={{ transform: "rotate(" + props.rotate + "deg)" }}
-								onClick={toggleInfo}
-								data-active={true}
-							>
-								{cardContent}
-							</div>
-						</animated.div>
-					))}
+					<AnimatedContainer
+						id={props.id}
+						animation={props.animation}
+						shouldAnimate={shouldAnimate}
+					>
+						<div
+							className={"card " + props.className}
+							style={{ transform: "rotate(" + props.rotate + "deg)" }}
+							onClick={toggleInfo}
+							data-active={true}
+						>
+							{cardContent}
+						</div>
+					</AnimatedContainer>
 				</>
 			)}
 		</>
