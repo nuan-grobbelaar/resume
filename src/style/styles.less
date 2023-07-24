@@ -63,6 +63,23 @@
   animation-delay: 1.5s;
 }
 
+.text-permanent-marker {
+  .prevent-select();
+  font-family: @tertiary-font;
+}
+
+.text-size-md {
+  font-size: 1.2em;
+}
+
+.text-size-lg {
+  font-size: 1.8em;
+}
+
+.text-size-xl {
+  font-size: 2.4em;
+}
+
 @keyframes draw {
   to {
     stroke-dashoffset: 0;
@@ -150,6 +167,7 @@ li {
 }
 
 .card {
+  .prevent-select();
   width: fit-content;
   height: fit-content;
   position: relative;
@@ -627,4 +645,26 @@ li {
     height: 12vw;
   }
   font-size: 1em;
+}
+
+.experience-arrow-2 {
+  svg {
+    width: 12vw;
+    height: 12vw;
+  }
+  font-size: 1em;
+}
+
+.contact-card-stack {
+  position: relative;
+
+  span {
+    position: absolute;
+    width: 7em;
+    transform: rotate(-4deg);
+    top: -80px;
+		left: 30px;
+    .text-permanent-marker();
+    .text-size-xl();
+  }
 }

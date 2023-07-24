@@ -2,8 +2,6 @@ const ExperienceArrow2 = (props) => {
 	return (
 		<div className={props.className}>
 			<svg
-				width="171"
-				height="200"
 				viewBox="0 -5 342 165"
 				fill="none"
 				xmlns="http://www.w3.org/2000/svg"

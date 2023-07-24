@@ -1,10 +1,9 @@
 import { useEffect, useState, useMemo } from "react";
 import { useSelector, useDispatch } from "react-redux";
 
-import Card from "./cards/Card";
 import CardStack from "./cards/CardStack";
 import DragContainer from "./ui/DragContainer";
-import useOnScreen from "../hooks/useOnScreen";
+import { CARD_SIZE } from "./cards/Card";
 import ContactCard from "./cards/ContactCard";
 import { contactActions } from "../store/contact-slice.js";
 
@@ -52,7 +51,10 @@ const Contact = (props) => {
 				name="contact"
 				setContainerSize={setContainerSize}
 			>
-				<CardStack id="stack" placeCard={placeCard} cardCount={cardCount} />
+				<div className="contact-card-stack" id="stack">
+					<span>Contact Me!</span>
+					<CardStack placeCard={placeCard} cardCount={cardCount} />
+				</div>
 				{Object.entries(cards)
 					.filter((card) => card[0] != "stack")
 					.map((card) => (

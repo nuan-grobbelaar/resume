@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 
 const initialState = {
 	cardCount: 5,
-	placedCards: [{ id: "stack", position: { xPos: 0.05, yPos: 0.6 } }],
+	placedCards: [{ id: "stack", position: { xPos: 0.05, yPos: 0.65 } }],
 };
 
 const contactSlice = createSlice({

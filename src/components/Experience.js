@@ -107,7 +107,7 @@ export default function Experience(props) {
 				icon={{
 					xPos: CARD_SIZE.width + 50,
 					yPos: -(CARD_SIZE.height + 50),
-					icon: <ExperienceArrow2 />,
+					icon: <ExperienceArrow2 className="experience-arrow-2" />,
 				}}
 			>
 				<Card
