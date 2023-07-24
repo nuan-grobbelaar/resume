@@ -26,7 +26,8 @@ export default function CardStack({ cardCount, placeCard }) {
 
 	const bind = useDrag(({ args: [index], down, movement: [mx, my] }) => {
 		if (!down) {
-			placeCard(mx, my, mx / 100);
+			//Don't place the card on top of the stack
+			if (mx > 270 || my < -390) placeCard(mx, my, mx / 100);
 		}
 		api.start((i) => {
 			if (index !== i) return;

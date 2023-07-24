@@ -16,6 +16,9 @@
 
 @error-background: #FF9494;
 
+@card-content-height: 250px;
+@card-content-width: 250px;
+
 .button-shadow-position-mixin {
   top: @button-shadow-top + 1;
   left: @button-shadow-left + 1;
@@ -174,8 +177,8 @@ li {
   z-index: 10 !important;
 
   .card__loader {
-    height: 250px;
-    width: 250px;
+    height: @card-content-height;
+    width: @card-content-width;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -219,7 +222,7 @@ li {
     }
 
     .card__content__card-body--media {
-      height: 250px;
+      height: @card-content-height;
       width: auto;
     }
 
@@ -635,6 +638,7 @@ li {
   position: relative;
 
   span {
+    width: @card-content-width;
     position: absolute;
   }
 }

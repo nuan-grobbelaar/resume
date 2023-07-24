@@ -45,7 +45,7 @@ const MediaCard = (props) => {
 
 	return (
 		<>
-			{showModal && (
+			{showModal ? (
 				<Modal
 					className="card--modal"
 					handleClose={setShowModal.bind(null, false)}
@@ -54,8 +54,7 @@ const MediaCard = (props) => {
 						<div className="card__content__card-body--media"></div>
 					</div>
 				</Modal>
-			)}
-			{showCard ? (
+			) : showCard ? (
 				springProps.map(({ x, y }, i) => (
 					<animated.div
 						id={props.id}
