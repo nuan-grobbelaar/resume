@@ -216,7 +216,7 @@ li {
   display: none;
 }
 .overlay {
-  z-index: 100;
+  z-index: 200;
   overflow-y: hidden;
   position: fixed;
   top: 0;
@@ -309,7 +309,7 @@ li {
   transform: translate(-50%, -50%);
   width: fit-content;
   height: fit-content;
-  z-index: 101 !important;
+  z-index: 201 !important;
 }
 .card--modal .card__content {
   background-color: #fff;
@@ -455,7 +455,6 @@ li {
   font-size: 14px;
 }
 .navBar {
-  /* background-color: blueviolet; */
   width: 100%;
   height: 110px;
   position: fixed;
@@ -468,6 +467,12 @@ li {
   z-index: 101;
 }
 .navBar .name-label {
+  -webkit-user-select: none;
+  /* Safari */
+  -ms-user-select: none;
+  /* IE 10 and IE 11 */
+  user-select: none;
+  /* Standard syntax */
   background-color: #000;
   padding-right: 32px;
   padding-top: 30px;

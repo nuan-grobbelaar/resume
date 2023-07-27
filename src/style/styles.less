@@ -159,7 +159,7 @@ li {
 }
 
 .overlay {
-  z-index: 100;
+  z-index: 200;
   overflow-y: hidden;
   position: fixed;
   top: 0;
@@ -256,7 +256,7 @@ li {
   transform: translate(-50%, -50%);
   width: fit-content;
   height: fit-content;
-  z-index: 101 !important;
+  z-index: 201 !important;
 
   .card__content {
     background-color: #fff;
@@ -426,7 +426,6 @@ li {
 }
 
 .navBar {
-  /* background-color: blueviolet; */
   width: 100%;
   height: 110px;
   position: fixed;
@@ -439,6 +438,7 @@ li {
   z-index: 101;
 
   .name-label {
+    .prevent-select();
     background-color: #000;
     padding-right: 32px;
     padding-top: 30px;

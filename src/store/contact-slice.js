@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 const initialState = {
 	cardCount: 5,
@@ -20,6 +21,20 @@ const contactSlice = createSlice({
 			);
 
 			activeCard.formData = action.payload.formData;
+
+			axios
+				.post("http://localhost:3001/send_email", {
+					name: action.payload.formData.name,
+					email: action.payload.formData.email,
+					subject: action.payload.formData.susbject,
+					message: action.payload.formData.message,
+				})
+				.then(function (response) {
+					console.log(response);
+				})
+				.catch(function (error) {
+					console.log(error);
+				});
 		},
 		removeCard(state, action) {
 			state.placedCards = state.placedCards.filter((card) => {
