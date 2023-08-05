@@ -58,6 +58,13 @@ function App() {
 		},
 	});
 
+	// useEffect(() => {
+	// 	window.scrollTo({
+	// 		top: sections["home"].ref.current.offsetTop,
+	// 		behavior: "smooth",
+	// 	});
+	// }, []);
+
 	useEffect(() => {
 		if (page && page !== "") {
 			window.scrollTo({

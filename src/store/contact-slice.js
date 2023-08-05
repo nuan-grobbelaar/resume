@@ -23,7 +23,7 @@ const contactSlice = createSlice({
 			activeCard.formData = action.payload.formData;
 
 			axios
-				.post("http://localhost:3001/send_email", {
+				.post("https://nuan-email-app-cf7490dabdbc.herokuapp.com/send_email", {
 					name: action.payload.formData.name,
 					email: action.payload.formData.email,
 					subject: action.payload.formData.susbject,
