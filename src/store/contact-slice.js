@@ -1,9 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { useSelector } from "react-redux";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL
-	? process.env.BASE_URL
+const BASE_URL = process.env.BASEURL
+	? process.env.BASEURL
 	: "http://localhost:3001";
 
 const initialState = {
