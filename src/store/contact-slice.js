@@ -1,12 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = process.env.BASE_URL
-	? process.env.BASE_URL
+const BASE_URL = process.env.REACT_APP_BASE_URL
+	? process.env.REACT_APP_BASE_URL
 	: "http://localhost:3001";
-
-console.log("REACT_APP_BASE_URL", process.env.REACT_APP_BASE_URL);
-console.log("BASE_URL", process.env.BASE_URL);
 
 const initialState = {
 	cardCount: 5,
