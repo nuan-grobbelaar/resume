@@ -1,9 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const BASE_URL = process.env.BASEURL
-	? process.env.BASEURL
+const BASE_URL = process.env.BASE_URL
+	? process.env.BASE_URL
 	: "http://localhost:3001";
+
+console.log("REACT_APP_BASE_URL", process.env.REACT_APP_BASE_URL);
+console.log("BASE_URL", process.env.BASE_URL);
 
 const initialState = {
 	cardCount: 5,
@@ -24,8 +27,6 @@ const contactSlice = createSlice({
 			);
 
 			activeCard.formData = action.payload.formData;
-
-			console.log("BASE_URL", BASE_URL);
 
 			axios
 				.post(`${BASE_URL}/send_email`, {
