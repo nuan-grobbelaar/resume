@@ -2,6 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
+const BASE_URL = process.env.BASE_URL
+	? process.env.BASE_URL
+	: "http://localhost:3001";
+
 const initialState = {
 	cardCount: 5,
 	placedCards: [{ id: "stack", position: { xPos: 0.05, yPos: 0.65 } }],
@@ -23,7 +27,7 @@ const contactSlice = createSlice({
 			activeCard.formData = action.payload.formData;
 
 			axios
-				.post("https://nuan-email-app-cf7490dabdbc.herokuapp.com/send_email", {
+				.post(`${BASE_URL}/send_email`, {
 					name: action.payload.formData.name,
 					email: action.payload.formData.email,
 					subject: action.payload.formData.susbject,

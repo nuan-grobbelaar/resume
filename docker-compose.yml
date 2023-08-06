@@ -4,6 +4,8 @@ services:
   front-end:
     build: ${FRONT_END_PATH}
     image: ${FRONT_END_NAME}:${TAG}
+    environment:
+      - BASE_URL=${EMAIL_SERVICE_URL}
     volumes:
       - type: bind
         source: ${FRONT_END_PATH}
@@ -14,14 +16,20 @@ services:
       - ${FRONT_END_PORT}
     command: "npm start"
 
-  # web-server: 
-  #   build: ${WEB_SERVER_PATH}
-  #   image: ${WEB_SERVER_NAME}:${TAG}
-  #   volumes:
-  #     - type: bind
-  #       source: ${WEB_SERVER_PATH}
-  #       target: /app
-  #   ports: 
-  #     - ${WEB_SERVER_PORT}:80
-  #   restart: always
+  email-service: 
+    build: ${EMAIL_SERVICE_PATH}
+    image: ${EMAIL_SERVICE_NAME}:${TAG}
+    environment:
+      - PORT=${EMAIL_SERVICE_PORT}
+      - USERNAME=${EMAIL_SERVICE_EMAIL_USERNAME}
+      - PASSWORD=${EMAIL_SERVICE_EMAIL_PASSWORD}
+    volumes:
+      - type: bind
+        source: ${EMAIL_SERVICE_PATH}
+        target: /app
+    ports: 
+      - ${EMAIL_SERVICE_PORT}:${EMAIL_SERVICE_PORT}  
+    expose:
+      - ${EMAIL_SERVICE_PORT}
+    command: "node src/app.js"
     
