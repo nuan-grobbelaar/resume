@@ -6,8 +6,6 @@ const BASE_URL = process.env.BASE_URL
 	? process.env.BASE_URL
 	: "http://localhost:3001";
 
-console.log("BASE_URL", BASE_URL);
-
 const initialState = {
 	cardCount: 5,
 	placedCards: [{ id: "stack", position: { xPos: 0.05, yPos: 0.65 } }],
@@ -27,6 +25,8 @@ const contactSlice = createSlice({
 			);
 
 			activeCard.formData = action.payload.formData;
+
+			console.log("BASE_URL", BASE_URL);
 
 			axios
 				.post(`${BASE_URL}/send_email`, {
